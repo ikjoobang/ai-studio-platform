@@ -755,6 +755,7 @@ app.get('/generate', (c) => {
 
       <script dangerouslySetInnerHTML={{
         __html: `
+          // 생성 버튼
           document.getElementById('generate-btn').addEventListener('click', function() {
             const btn = this;
             const originalText = btn.innerHTML;
@@ -766,6 +767,65 @@ app.get('/generate', (c) => {
               btn.disabled = false;
               alert('API 키가 설정되지 않았습니다. 관리자에게 문의하세요.');
             }, 2000);
+          });
+          
+          // AI 도구 선택 버튼
+          document.querySelectorAll('#btn-nano, #btn-ideogram').forEach(btn => {
+            btn.addEventListener('click', function() {
+              document.querySelectorAll('#btn-nano, #btn-ideogram').forEach(b => {
+                b.classList.remove('border-yellow-500/50', 'border-cyan-500/50', 'bg-gradient-to-br', 'from-yellow-500/20', 'to-orange-500/20');
+                b.classList.add('border-transparent', 'glass');
+              });
+              if (this.id === 'btn-nano') {
+                this.classList.remove('border-transparent', 'glass');
+                this.classList.add('border-yellow-500/50', 'bg-gradient-to-br', 'from-yellow-500/20', 'to-orange-500/20');
+              } else {
+                this.classList.remove('border-transparent', 'glass');
+                this.classList.add('border-cyan-500/50', 'bg-gradient-to-br', 'from-blue-500/20', 'to-cyan-500/20');
+              }
+            });
+          });
+          
+          // 이미지 비율 버튼
+          document.querySelectorAll('.ratio-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+              document.querySelectorAll('.ratio-btn').forEach(b => {
+                b.classList.remove('bg-brand-500/20', 'border', 'border-brand-500/50');
+                b.classList.add('glass');
+              });
+              this.classList.remove('glass');
+              this.classList.add('bg-brand-500/20', 'border', 'border-brand-500/50');
+            });
+          });
+          
+          // 생성 개수 버튼
+          document.querySelectorAll('.count-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+              document.querySelectorAll('.count-btn').forEach(b => {
+                b.classList.remove('bg-brand-500/20', 'border', 'border-brand-500/50');
+                b.classList.add('glass');
+              });
+              this.classList.remove('glass');
+              this.classList.add('bg-brand-500/20', 'border', 'border-brand-500/50');
+            });
+          });
+          
+          // 프리셋 버튼
+          document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const presets = {
+                '📷 실사 스타일': ', 실사 광고 사진 스타일, 고화질, 4K',
+                '🎨 애니메이션': ', 2D 애니메이션 스타일, 지브리 스타일',
+                '🌅 골든아워': ', 골든아워 조명, 따뜻한 햇살',
+                '🏙️ 시네마틱': ', 시네마틱 구도, 영화 스틸컷 스타일'
+              };
+              const textarea = document.getElementById('prompt-input');
+              const presetText = presets[this.textContent.trim()];
+              if (presetText && textarea) {
+                textarea.value = textarea.value + presetText;
+                textarea.focus();
+              }
+            });
           });
         `
       }} />
