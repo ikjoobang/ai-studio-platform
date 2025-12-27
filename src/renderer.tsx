@@ -52,25 +52,35 @@ export const renderer = jsxRenderer(({ children }) => {
             }
             body {
               font-family: 'Inter', system-ui, -apple-system, sans-serif;
-              background-color: #0a0a0a;
+              background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
               color: #ffffff;
               overflow-x: hidden;
+              min-height: 100vh;
             }
             .gradient-text {
-              background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #ec4899 100%);
+              background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 50%, #f472b6 100%);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
               background-clip: text;
             }
+            /* 텍스트 가시성 - 다크 테마용 밝은 색상 */
+            .text-gray-300 { color: #e2e8f0 !important; }
+            .text-gray-400 { color: #cbd5e1 !important; }
+            .text-gray-500 { color: #94a3b8 !important; }
+            h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
+            p { color: #e2e8f0 !important; }
+            li { color: #e2e8f0 !important; }
+            a { color: #e2e8f0; }
+            span { color: #e2e8f0; }
             .gradient-border {
               position: relative;
               background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #ec4899 100%);
-              padding: 1px;
-              border-radius: 12px;
+              padding: 2px;
+              border-radius: 16px;
             }
             .gradient-border-inner {
-              background: #0a0a0a;
-              border-radius: 11px;
+              background: linear-gradient(135deg, #1e293b 0%, #312e81 100%);
+              border-radius: 14px;
               height: 100%;
             }
             .card-hover {
@@ -78,12 +88,12 @@ export const renderer = jsxRenderer(({ children }) => {
             }
             .card-hover:hover {
               transform: translateY(-4px);
-              box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+              box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
             }
             .glass {
-              background: rgba(255, 255, 255, 0.05);
-              backdrop-filter: blur(10px);
-              border: 1px solid rgba(255, 255, 255, 0.1);
+              background: rgba(30, 41, 59, 0.8);
+              backdrop-filter: blur(12px);
+              border: 1px solid rgba(148, 163, 184, 0.2);
             }
             .glow {
               box-shadow: 0 0 40px rgba(14, 165, 233, 0.3);
@@ -103,9 +113,13 @@ export const renderer = jsxRenderer(({ children }) => {
               animation: pulse-glow 2s ease-in-out infinite;
             }
             .hero-gradient {
-              background: radial-gradient(ellipse at 50% 0%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-                          radial-gradient(ellipse at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
-                          radial-gradient(ellipse at 20% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 40%);
+              background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            }
+            nav a, nav span, nav button {
+              color: #e2e8f0 !important;
+            }
+            .nav-link:hover {
+              color: #ffffff !important;
             }
           `
         }} />
