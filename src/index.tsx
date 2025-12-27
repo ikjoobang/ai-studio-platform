@@ -790,11 +790,13 @@ app.get('/generate', (c) => {
           document.querySelectorAll('.ratio-btn').forEach(btn => {
             btn.addEventListener('click', function() {
               document.querySelectorAll('.ratio-btn').forEach(b => {
-                b.classList.remove('bg-brand-500/20', 'border', 'border-brand-500/50');
-                b.classList.add('glass');
+                b.style.background = 'rgba(255,255,255,0.05)';
+                b.style.border = '1px solid rgba(255,255,255,0.1)';
+                b.style.color = '#cbd5e1';
               });
-              this.classList.remove('glass');
-              this.classList.add('bg-brand-500/20', 'border', 'border-brand-500/50');
+              this.style.background = 'rgba(14, 165, 233, 0.3)';
+              this.style.border = '2px solid #38bdf8';
+              this.style.color = '#ffffff';
             });
           });
           
@@ -802,17 +804,25 @@ app.get('/generate', (c) => {
           document.querySelectorAll('.count-btn').forEach(btn => {
             btn.addEventListener('click', function() {
               document.querySelectorAll('.count-btn').forEach(b => {
-                b.classList.remove('bg-brand-500/20', 'border', 'border-brand-500/50');
-                b.classList.add('glass');
+                b.style.background = 'rgba(255,255,255,0.05)';
+                b.style.border = '1px solid rgba(255,255,255,0.1)';
+                b.style.color = '#cbd5e1';
               });
-              this.classList.remove('glass');
-              this.classList.add('bg-brand-500/20', 'border', 'border-brand-500/50');
+              this.style.background = 'rgba(14, 165, 233, 0.3)';
+              this.style.border = '2px solid #38bdf8';
+              this.style.color = '#ffffff';
             });
           });
           
           // 프리셋 버튼
           document.querySelectorAll('.preset-btn').forEach(btn => {
             btn.addEventListener('click', function() {
+              // 선택 표시
+              document.querySelectorAll('.preset-btn').forEach(b => {
+                b.classList.remove('bg-brand-500/30', 'border-2', 'border-brand-400');
+              });
+              this.classList.add('bg-brand-500/30', 'border-2', 'border-brand-400');
+              
               const presets = {
                 '📷 실사 스타일': ', 실사 광고 사진 스타일, 고화질, 4K',
                 '🎨 애니메이션': ', 2D 애니메이션 스타일, 지브리 스타일',
