@@ -229,8 +229,8 @@ app.get('/', (c) => {
           <div class="grid sm:grid-cols-3 gap-6 lg:gap-8">
             <div class="glass rounded-2xl p-6 sm:p-8 card-hover">
               <div class="text-center mb-6">
-                <h3 class="text-xl font-semibold mb-2">Starter</h3>
-                <div class="text-4xl font-bold mb-1">$29</div>
+                <h3 class="text-xl font-semibold mb-2">스타터</h3>
+                <div class="text-4xl font-bold mb-1">₩29,000</div>
                 <p class="text-gray-400 text-sm">630 크레딧</p>
               </div>
               <ul class="space-y-3 mb-8 text-sm">
@@ -245,7 +245,7 @@ app.get('/', (c) => {
                 <div class="absolute top-0 right-0 bg-gradient-to-r from-brand-500 to-purple-600 text-xs px-4 py-1 rounded-bl-xl">인기</div>
                 <div class="text-center mb-6">
                   <h3 class="text-xl font-semibold mb-2">Pro</h3>
-                  <div class="text-4xl font-bold gradient-text mb-1">$59</div>
+                  <div class="text-4xl font-bold gradient-text mb-1">₩59,000</div>
                   <p class="text-gray-400 text-sm">1,500 크레딧</p>
                 </div>
                 <ul class="space-y-3 mb-8 text-sm">
@@ -258,8 +258,8 @@ app.get('/', (c) => {
             
             <div class="glass rounded-2xl p-6 sm:p-8 card-hover">
               <div class="text-center mb-6">
-                <h3 class="text-xl font-semibold mb-2">Business</h3>
-                <div class="text-4xl font-bold mb-1">$119</div>
+                <h3 class="text-xl font-semibold mb-2">비즈니스</h3>
+                <div class="text-4xl font-bold mb-1">₩119,000</div>
                 <p class="text-gray-400 text-sm">3,500 크레딧</p>
               </div>
               <ul class="space-y-3 mb-8 text-sm">
