@@ -545,15 +545,7 @@ app.get('/generate-video', (c) => {
               <span class="text-xl font-bold gradient-text">AI Studio</span>
             </a>
             <div class="flex items-center space-x-4">
-              <div class="hidden sm:flex items-center px-3 py-1.5 bg-yellow-500/20 rounded-lg">
-                <i class="fas fa-coins text-yellow-400 mr-2"></i>
-                <span class="text-yellow-400 text-sm">642.5 포인트</span>
-              </div>
-              <div class="hidden sm:flex items-center px-3 py-1.5 bg-red-500/20 rounded-lg">
-                <i class="fas fa-clock text-red-400 mr-2"></i>
-                <span class="text-red-400 text-sm">만료: 2026-01-18</span>
-              </div>
-              <a href="/generate" class="px-4 py-2 glass rounded-lg hover:bg-white/10">Image</a>
+              <a href="/generate" class="px-4 py-2 glass rounded-lg hover:bg-white/10">이미지</a>
               <a href="/" class="text-gray-300 hover:text-white"><i class="fas fa-home text-xl"></i></a>
             </div>
           </div>
@@ -671,20 +663,16 @@ app.get('/generate-video', (c) => {
               <div class="glass rounded-2xl p-6">
                 <h3 class="font-semibold mb-3 flex items-center">
                   <i class="fas fa-info-circle text-purple-400 mr-2"></i>
-                  Kling AI Status
+                  모델 정보
                 </h3>
                 <div class="space-y-2 text-sm text-gray-400">
                   <div class="flex justify-between">
-                    <span>Remaining 포인트</span>
-                    <span class="text-white font-medium">642.5 포인트</span>
+                    <span>V2.5 Turbo</span>
+                    <span class="text-green-400">빠르고 효율적</span>
                   </div>
                   <div class="flex justify-between">
-                    <span>Expiration</span>
-                    <span class="text-red-400">2026-01-18 (~20 days)</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span>Est. Videos (5s Turbo)</span>
-                    <span class="text-green-400">~25 videos</span>
+                    <span>V2.1 Master</span>
+                    <span class="text-purple-400">최고 품질</span>
                   </div>
                 </div>
               </div>
@@ -886,29 +874,29 @@ app.get('/dashboard', (c) => {
               <div class="flex items-center justify-between mb-4">
                 <i class="fas fa-image text-2xl text-brand-400"></i>
               </div>
-              <div class="text-3xl font-bold mb-1">∞</div>
-              <div class="text-sm text-gray-400">Images (API Ready)</div>
+              <div class="text-3xl font-bold mb-1">2</div>
+              <div class="text-sm text-gray-400">이미지 모델</div>
             </div>
             <div class="glass rounded-2xl p-6">
               <div class="flex items-center justify-between mb-4">
                 <i class="fas fa-video text-2xl text-purple-400"></i>
               </div>
-              <div class="text-3xl font-bold mb-1">642.5</div>
-              <div class="text-sm text-gray-400">Kling 포인트</div>
+              <div class="text-3xl font-bold mb-1">2</div>
+              <div class="text-sm text-gray-400">영상 모델</div>
             </div>
             <div class="glass rounded-2xl p-6">
               <div class="flex items-center justify-between mb-4">
-                <i class="fas fa-clock text-2xl text-red-400"></i>
+                <i class="fas fa-bolt text-2xl text-yellow-400"></i>
               </div>
-              <div class="text-3xl font-bold mb-1">20</div>
-              <div class="text-sm text-gray-400">Days Remaining</div>
+              <div class="text-3xl font-bold mb-1">빠름</div>
+              <div class="text-sm text-gray-400">생성 속도</div>
             </div>
             <div class="glass rounded-2xl p-6">
               <div class="flex items-center justify-between mb-4">
                 <i class="fas fa-check-circle text-2xl text-green-400"></i>
               </div>
               <div class="text-3xl font-bold mb-1">4</div>
-              <div class="text-sm text-gray-400">AI Models Ready</div>
+              <div class="text-sm text-gray-400">AI 모델 연동</div>
             </div>
           </div>
 
@@ -1199,30 +1187,25 @@ app.get('/api/cache/info', (c) => {
 
 // 내보내기 기록
 app.get('/api/export/history', (c) => {
-  const historyData = `AI Studio - Generation Report
+  const historyData = `AI Studio - 생성 리포트
 ================================
-Generated: ${new Date().toISOString()}
-Version: 2.0.0
+생성일: ${new Date().toISOString()}
+버전: 2.0.0
 
-[API Status]
+[API 상태]
 - Fal.ai (Nano Banana): 활성
 - Ideogram: 활성  
 - Kling V2.5 Turbo: 활성
 - Kling V2.1 Master: 활성
 
-[Kling AI Status]
-- Remaining 포인트: 642.5
-- Expiration: 2026-01-18
-- Days Remaining: ~20 days
+[사용 가능한 모델]
+이미지 생성:
+- Nano Banana (Fal.ai) - 고품질 이미지 생성
+- Ideogram - 로고 및 텍스트 렌더링
 
-[Available Models]
-Image Generation:
-- Nano Banana (Fal.ai) - High quality image generation
-- Ideogram - Logo and text rendering
-
-Video Generation:
-- Kling V2.5 Turbo - Fast, 25 points/5s
-- Kling V2.1 Master - Premium, 35 points/5s
+영상 생성:
+- Kling V2.5 Turbo - 빠른 생성
+- Kling V2.1 Master - 최고 품질
 
 ================================
 AI Studio | https://ai-studio-platform.pages.dev
@@ -1464,10 +1447,8 @@ app.get('/api/video-status/:taskId', async (c) => {
 app.get('/api/kling/status', (c) => {
   return c.json({
     configured: true,
-    remaining포인트: 642.5,
-    expirationDate: '2026-01-18',
-    daysRemaining: 20,
-    models: ['kling-v2-5-turbo', 'kling-v2-1-master']
+    models: ['kling-v2-5-turbo', 'kling-v2-1-master'],
+    status: 'active'
   })
 })
 
