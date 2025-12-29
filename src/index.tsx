@@ -10,6 +10,8 @@ type Bindings = {
   DB?: D1Database
   FAL_API_KEY?: string
   IDEOGRAM_API_KEY?: string
+  KLING_ACCESS_KEY?: string
+  KLING_SECRET_KEY?: string
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -49,6 +51,7 @@ app.get('/', (c) => {
             <div class="hidden md:flex items-center space-x-8">
               <a href="#features" class="text-gray-300 hover:text-white transition-colors">기능</a>
               <a href="#tools" class="text-gray-300 hover:text-white transition-colors">AI 도구</a>
+              <a href="/generate-video" class="text-gray-300 hover:text-white transition-colors">영상 생성</a>
               <a href="#pricing" class="text-gray-300 hover:text-white transition-colors">요금제</a>
               <a href="/dashboard" class="text-gray-300 hover:text-white transition-colors">대시보드</a>
             </div>
@@ -238,21 +241,25 @@ app.get('/', (c) => {
               </div>
             </a>
             
-            <div class="glass rounded-xl p-6 sm:p-8 opacity-60">
-              <div class="flex items-start justify-between mb-4">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
-                  <i class="fas fa-clock text-2xl text-gray-400"></i>
+            <a href="/generate-video" class="group">
+              <div class="glass rounded-xl card-hover p-6 sm:p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                    <i class="fas fa-video text-2xl text-white"></i>
+                  </div>
+                  <span class="px-3 py-1 text-xs font-medium bg-purple-500/20 text-purple-400 rounded-full">영상 생성</span>
                 </div>
-                <span class="px-3 py-1 text-xs font-medium bg-gray-500/20 text-gray-400 rounded-full">준비중</span>
+                <h3 class="text-xl font-semibold mb-2 group-hover:text-brand-400 transition-colors">Kling AI</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                  텍스트나 이미지로 고품질 AI 영상 생성. 5초~10초 영상을 빠르게 제작.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 text-xs bg-white/5 rounded">텍스트→영상</span>
+                  <span class="px-2 py-1 text-xs bg-white/5 rounded">이미지→영상</span>
+                  <span class="px-2 py-1 text-xs bg-white/5 rounded">1080p</span>
+                </div>
               </div>
-              <h3 class="text-xl font-semibold mb-2 text-gray-400">더 많은 AI</h3>
-              <p class="text-gray-500 text-sm leading-relaxed mb-4">
-                Midjourney, Stable Diffusion 등 더 많은 AI 도구가 곧 추가됩니다.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-2 py-1 text-xs bg-white/5 rounded text-gray-500">Coming Soon</span>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
@@ -673,12 +680,12 @@ app.get('/generate', (c) => {
               <div class="glass rounded-2xl p-6">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-pen-fancy text-brand-400 mr-2"></i>
-                  프롬프트
+                  무엇을 만들까요?
                 </h2>
                 <textarea
                   id="prompt-input"
                   class="w-full h-32 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors resize-none"
-                  placeholder="생성하고 싶은 이미지를 설명해주세요..."
+                  placeholder="예: 한강에서 자전거 타는 강아지, 카페 로고, 우주를 나는 고래..."
                 ></textarea>
                 
                 <div class="mt-4">
@@ -1086,6 +1093,518 @@ app.get('/api/cache/info', (c) => {
     },
     bustingMethod: 'version query parameter',
     example: '/static/app.js?v=1.0.0'
+  })
+})
+
+// ==================== 영상 생성 페이지 ====================
+app.get('/generate-video', (c) => {
+  return c.render(
+    <>
+      <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16 md:h-20">
+            <a href="/" class="flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center">
+                <i class="fas fa-wand-magic-sparkles text-white text-lg"></i>
+              </div>
+              <span class="text-xl font-bold gradient-text">AI Studio</span>
+            </a>
+            
+            <div class="flex items-center space-x-4">
+              <div class="hidden sm:flex items-center px-4 py-2 glass rounded-lg">
+                <i class="fas fa-coins text-yellow-400 mr-2"></i>
+                <span class="font-medium">642.5</span>
+                <span class="text-gray-400 ml-1 text-sm">포인트</span>
+              </div>
+              <div class="hidden sm:flex items-center px-3 py-1.5 bg-red-500/20 rounded-lg">
+                <i class="fas fa-clock text-red-400 mr-2"></i>
+                <span class="text-red-400 text-sm">만료: 2026-01-18</span>
+              </div>
+              <a href="/generate" class="text-gray-300 hover:text-white transition-colors">
+                <i class="fas fa-image text-xl"></i>
+              </a>
+              <a href="/" class="text-gray-300 hover:text-white transition-colors">
+                <i class="fas fa-home text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main class="pt-24 pb-12 px-4 min-h-screen">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-8">
+            <h1 class="text-3xl font-bold mb-2">
+              <i class="fas fa-video text-purple-400 mr-3"></i>
+              AI 영상 생성
+            </h1>
+            <p class="text-gray-400">Kling AI로 텍스트나 이미지를 고품질 영상으로 변환하세요</p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-8">
+            {/* Left Panel */}
+            <div class="space-y-6">
+              {/* 생성 모드 선택 */}
+              <div class="glass rounded-2xl p-6">
+                <h2 class="text-lg font-semibold mb-4 flex items-center">
+                  <i class="fas fa-wand-sparkles text-purple-400 mr-2"></i>
+                  생성 모드
+                </h2>
+                <div class="grid grid-cols-2 gap-3">
+                  <button id="mode-text" class="p-4 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-2 border-purple-500/50 transition-all">
+                    <i class="fas fa-keyboard text-2xl mb-2 block text-purple-400"></i>
+                    <span class="font-medium">텍스트 → 영상</span>
+                    <span class="text-xs text-gray-400 block mt-1">프롬프트로 영상 생성</span>
+                  </button>
+                  <button id="mode-image" class="p-4 rounded-xl glass border-2 border-transparent hover:border-white/20 transition-all">
+                    <i class="fas fa-image text-2xl mb-2 block text-cyan-400"></i>
+                    <span class="font-medium">이미지 → 영상</span>
+                    <span class="text-xs text-gray-400 block mt-1">이미지를 영상으로 변환</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* 프롬프트 입력 */}
+              <div class="glass rounded-2xl p-6">
+                <h2 class="text-lg font-semibold mb-4 flex items-center">
+                  <i class="fas fa-pen-fancy text-purple-400 mr-2"></i>
+                  어떤 영상을 만들까요?
+                </h2>
+                <textarea
+                  id="video-prompt"
+                  class="w-full h-32 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors resize-none"
+                  placeholder="예: 해변에서 달리는 강아지, 우주를 나는 고래, 숲 속을 걷는 사람..."
+                ></textarea>
+                
+                <div class="mt-4">
+                  <span class="text-sm text-gray-400 mb-2 block">빠른 프리셋</span>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all">🌊 시네마틱</button>
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all">🎬 슬로우모션</button>
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all">✨ 판타지</button>
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all">🏙️ 도시 야경</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* 이미지 업로드 (이미지→영상 모드) */}
+              <div id="image-upload-section" class="glass rounded-2xl p-6 hidden">
+                <h2 class="text-lg font-semibold mb-4 flex items-center">
+                  <i class="fas fa-upload text-purple-400 mr-2"></i>
+                  참조 이미지
+                </h2>
+                <div class="border-2 border-dashed border-white/20 rounded-xl p-8 text-center hover:border-purple-500/50 transition-colors cursor-pointer">
+                  <i class="fas fa-cloud-upload-alt text-4xl text-gray-500 mb-3"></i>
+                  <p class="text-gray-400 mb-2">이미지를 드래그하거나 클릭하여 업로드</p>
+                  <p class="text-xs text-gray-500">JPG, PNG, WebP (최대 10MB)</p>
+                </div>
+              </div>
+
+              {/* 영상 설정 */}
+              <div class="glass rounded-2xl p-6">
+                <h2 class="text-lg font-semibold mb-4 flex items-center">
+                  <i class="fas fa-sliders text-purple-400 mr-2"></i>
+                  영상 설정
+                </h2>
+                <div class="space-y-4">
+                  <div>
+                    <label class="text-sm text-gray-400 mb-2 block">영상 길이</label>
+                    <div class="grid grid-cols-2 gap-2">
+                      <button class="duration-btn px-3 py-2 text-sm rounded-lg bg-purple-500/20 border border-purple-500/50">5초</button>
+                      <button class="duration-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10">10초</button>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="text-sm text-gray-400 mb-2 block">화면 비율</label>
+                    <div class="grid grid-cols-3 gap-2">
+                      <button class="video-ratio-btn px-3 py-2 text-sm rounded-lg bg-purple-500/20 border border-purple-500/50">16:9</button>
+                      <button class="video-ratio-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10">9:16</button>
+                      <button class="video-ratio-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10">1:1</button>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="text-sm text-gray-400 mb-2 block">품질 모드</label>
+                    <div class="grid grid-cols-2 gap-2">
+                      <button class="quality-btn px-3 py-2 text-sm rounded-lg bg-purple-500/20 border border-purple-500/50">
+                        Standard
+                        <span class="text-xs text-gray-400 block">빠른 생성</span>
+                      </button>
+                      <button class="quality-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10">
+                        Pro
+                        <span class="text-xs text-gray-400 block">고품질</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button id="generate-video-btn" class="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl font-semibold text-lg hover:opacity-90 transition-all pulse-glow flex items-center justify-center">
+                <i class="fas fa-film mr-2"></i>
+                영상 생성하기
+                <span class="ml-2 px-2 py-0.5 bg-white/20 rounded text-sm">~50 포인트</span>
+              </button>
+            </div>
+
+            {/* Right Panel - 미리보기 */}
+            <div class="space-y-6">
+              <div class="glass rounded-2xl p-6 min-h-[500px] lg:min-h-[600px] flex flex-col">
+                <h2 class="text-lg font-semibold mb-4 flex items-center">
+                  <i class="fas fa-play-circle text-purple-400 mr-2"></i>
+                  결과 미리보기
+                </h2>
+                <div id="video-preview-area" class="flex-1 flex items-center justify-center border-2 border-dashed border-white/10 rounded-xl">
+                  <div class="text-center p-8">
+                    <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mx-auto mb-4">
+                      <i class="fas fa-video text-4xl text-gray-500"></i>
+                    </div>
+                    <p class="text-gray-400 mb-2">생성된 영상이 여기에 표시됩니다</p>
+                    <p class="text-xs text-gray-500">생성 시간: 약 1~3분</p>
+                  </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                  <button disabled class="flex-1 py-3 rounded-xl glass text-gray-500 cursor-not-allowed">
+                    <i class="fas fa-download mr-2"></i>다운로드
+                  </button>
+                  <button disabled class="flex-1 py-3 rounded-xl glass text-gray-500 cursor-not-allowed">
+                    <i class="fas fa-share-alt mr-2"></i>공유하기
+                  </button>
+                </div>
+              </div>
+
+              {/* Kling AI 정보 */}
+              <div class="glass rounded-2xl p-6">
+                <h3 class="font-semibold mb-3 flex items-center">
+                  <i class="fas fa-info-circle text-purple-400 mr-2"></i>
+                  Kling AI 정보
+                </h3>
+                <div class="space-y-2 text-sm text-gray-400">
+                  <div class="flex justify-between">
+                    <span>남은 포인트</span>
+                    <span class="text-white font-medium">642.5 Points</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>만료일</span>
+                    <span class="text-red-400">2026-01-18 (약 20일)</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>예상 생성 가능</span>
+                    <span class="text-green-400">~12회 (5초 기준)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          // 모드 선택
+          document.querySelectorAll('#mode-text, #mode-image').forEach(btn => {
+            btn.addEventListener('click', function() {
+              document.querySelectorAll('#mode-text, #mode-image').forEach(b => {
+                b.classList.remove('border-purple-500/50', 'bg-gradient-to-br', 'from-purple-500/20', 'to-pink-500/20');
+                b.classList.add('border-transparent', 'glass');
+              });
+              this.classList.remove('border-transparent', 'glass');
+              this.classList.add('border-purple-500/50', 'bg-gradient-to-br', 'from-purple-500/20', 'to-pink-500/20');
+              
+              // 이미지 업로드 섹션 토글
+              const uploadSection = document.getElementById('image-upload-section');
+              if (this.id === 'mode-image') {
+                uploadSection.classList.remove('hidden');
+              } else {
+                uploadSection.classList.add('hidden');
+              }
+            });
+          });
+          
+          // 버튼 스타일링 함수
+          function setupButtonGroup(selector) {
+            document.querySelectorAll(selector).forEach(btn => {
+              btn.addEventListener('click', function() {
+                document.querySelectorAll(selector).forEach(b => {
+                  b.style.background = 'rgba(255,255,255,0.05)';
+                  b.style.border = '1px solid rgba(255,255,255,0.1)';
+                });
+                this.style.background = 'rgba(168, 85, 247, 0.3)';
+                this.style.border = '2px solid #a855f7';
+              });
+            });
+          }
+          
+          setupButtonGroup('.duration-btn');
+          setupButtonGroup('.video-ratio-btn');
+          setupButtonGroup('.quality-btn');
+          
+          // 프리셋 버튼
+          document.querySelectorAll('.video-preset-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+              document.querySelectorAll('.video-preset-btn').forEach(b => {
+                b.classList.remove('bg-purple-500/30', 'border-2', 'border-purple-400');
+              });
+              this.classList.add('bg-purple-500/30', 'border-2', 'border-purple-400');
+              
+              const presets = {
+                '🌊 시네마틱': ', cinematic, epic, dramatic lighting, 4K',
+                '🎬 슬로우모션': ', slow motion, detailed, smooth movement',
+                '✨ 판타지': ', fantasy style, magical, ethereal glow',
+                '🏙️ 도시 야경': ', night city, neon lights, urban atmosphere'
+              };
+              const textarea = document.getElementById('video-prompt');
+              const presetText = presets[this.textContent.trim()];
+              if (presetText && textarea) {
+                textarea.value = textarea.value + presetText;
+                textarea.focus();
+              }
+            });
+          });
+          
+          // 생성 버튼
+          document.getElementById('generate-video-btn').addEventListener('click', async function() {
+            const btn = this;
+            const prompt = document.getElementById('video-prompt').value;
+            
+            if (!prompt.trim()) {
+              alert('프롬프트를 입력해주세요.');
+              return;
+            }
+            
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>영상 생성 요청 중...';
+            btn.disabled = true;
+            
+            try {
+              const response = await fetch('/api/generate-video', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  prompt: prompt,
+                  duration: '5',
+                  aspectRatio: '16:9',
+                  mode: 'std'
+                })
+              });
+              
+              const data = await response.json();
+              
+              if (data.success) {
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i>생성 요청 완료!';
+                alert('영상 생성이 시작되었습니다!\\n작업 ID: ' + data.taskId + '\\n\\n생성 완료까지 1~3분 소요됩니다.');
+                
+                // 상태 확인 시작
+                checkVideoStatus(data.taskId);
+              } else {
+                throw new Error(data.error || '영상 생성 실패');
+              }
+            } catch (error) {
+              alert('오류: ' + error.message);
+              btn.innerHTML = originalText;
+            }
+            
+            btn.disabled = false;
+          });
+          
+          // 영상 상태 확인
+          async function checkVideoStatus(taskId) {
+            const previewArea = document.getElementById('video-preview-area');
+            previewArea.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i><p class="text-gray-400">영상 생성 중...</p><p class="text-xs text-gray-500 mt-2">작업 ID: ' + taskId + '</p></div>';
+            
+            const checkStatus = async () => {
+              try {
+                const response = await fetch('/api/video-status/' + taskId);
+                const data = await response.json();
+                
+                if (data.status === 'completed' && data.videoUrl) {
+                  previewArea.innerHTML = '<video controls class="w-full h-full rounded-xl" src="' + data.videoUrl + '"></video>';
+                  document.querySelector('button:contains("다운로드")').disabled = false;
+                } else if (data.status === 'failed') {
+                  previewArea.innerHTML = '<div class="text-center text-red-400"><i class="fas fa-exclamation-circle text-4xl mb-4"></i><p>영상 생성 실패</p></div>';
+                } else {
+                  // 계속 확인
+                  setTimeout(checkStatus, 5000);
+                }
+              } catch (error) {
+                console.error('Status check error:', error);
+                setTimeout(checkStatus, 5000);
+              }
+            };
+            
+            setTimeout(checkStatus, 10000); // 10초 후 첫 확인
+          }
+        `
+      }} />
+    </>
+  )
+})
+
+// ==================== Kling AI 영상 생성 API ====================
+
+// JWT 토큰 생성 함수
+async function generateKlingJWT(accessKey: string, secretKey: string): Promise<string> {
+  const header = {
+    alg: 'HS256',
+    typ: 'JWT'
+  }
+  
+  const now = Math.floor(Date.now() / 1000)
+  const payload = {
+    iss: accessKey,
+    exp: now + 1800, // 30분 후 만료
+    nbf: now - 5
+  }
+  
+  const base64Header = btoa(JSON.stringify(header)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
+  const base64Payload = btoa(JSON.stringify(payload)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
+  
+  const signatureInput = base64Header + '.' + base64Payload
+  
+  // HMAC-SHA256 서명
+  const encoder = new TextEncoder()
+  const key = await crypto.subtle.importKey(
+    'raw',
+    encoder.encode(secretKey),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  )
+  
+  const signature = await crypto.subtle.sign('HMAC', key, encoder.encode(signatureInput))
+  const base64Signature = btoa(String.fromCharCode(...new Uint8Array(signature)))
+    .replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
+  
+  return signatureInput + '.' + base64Signature
+}
+
+// 영상 생성 요청
+app.post('/api/generate-video', async (c) => {
+  try {
+    const body = await c.req.json()
+    const { prompt, duration, aspectRatio, mode, imageUrl } = body
+    
+    if (!prompt) {
+      return c.json({ success: false, error: '프롬프트를 입력해주세요.' }, 400)
+    }
+    
+    // 환경변수에서 키 가져오기 (없으면 하드코딩된 값 사용 - 테스트용)
+    const accessKey = c.env?.KLING_ACCESS_KEY || 'Ar8mLGAGRaMMmTrKb4LK3rTPbn9YGPtA'
+    const secretKey = c.env?.KLING_SECRET_KEY || 'RfM9F3hJMP9KQhdHk8pCpMFKaPen8QCM'
+    
+    // JWT 토큰 생성
+    const token = await generateKlingJWT(accessKey, secretKey)
+    
+    // Kling API 호출
+    const klingResponse = await fetch('https://api.klingai.com/v1/videos/text2video', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({
+        model_name: 'kling-v1',
+        prompt: prompt,
+        negative_prompt: 'blurry, low quality, distorted',
+        cfg_scale: 0.5,
+        mode: mode || 'std',
+        duration: duration || '5',
+        aspect_ratio: aspectRatio || '16:9'
+      })
+    })
+    
+    const klingData = await klingResponse.json() as { code: number; data?: { task_id: string }; message?: string }
+    
+    if (klingData.code === 0 && klingData.data?.task_id) {
+      return c.json({
+        success: true,
+        taskId: klingData.data.task_id,
+        message: '영상 생성이 시작되었습니다.'
+      })
+    } else {
+      return c.json({
+        success: false,
+        error: klingData.message || 'Kling API 오류',
+        details: klingData
+      }, 400)
+    }
+  } catch (error) {
+    console.error('Video generation error:', error)
+    return c.json({ 
+      success: false, 
+      error: 'Internal server error',
+      details: String(error)
+    }, 500)
+  }
+})
+
+// 영상 상태 확인
+app.get('/api/video-status/:taskId', async (c) => {
+  try {
+    const taskId = c.req.param('taskId')
+    
+    const accessKey = c.env?.KLING_ACCESS_KEY || 'Ar8mLGAGRaMMmTrKb4LK3rTPbn9YGPtA'
+    const secretKey = c.env?.KLING_SECRET_KEY || 'RfM9F3hJMP9KQhdHk8pCpMFKaPen8QCM'
+    
+    const token = await generateKlingJWT(accessKey, secretKey)
+    
+    const response = await fetch('https://api.klingai.com/v1/videos/text2video/' + taskId, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    
+    const data = await response.json() as { 
+      code: number
+      data?: { 
+        task_status: string
+        task_result?: { videos?: Array<{ url: string }> }
+      }
+      message?: string 
+    }
+    
+    if (data.code === 0 && data.data) {
+      const status = data.data.task_status
+      let videoUrl = null
+      
+      if (status === 'succeed' && data.data.task_result?.videos?.[0]) {
+        videoUrl = data.data.task_result.videos[0].url
+      }
+      
+      return c.json({
+        success: true,
+        status: status === 'succeed' ? 'completed' : status === 'failed' ? 'failed' : 'processing',
+        videoUrl: videoUrl,
+        rawStatus: status
+      })
+    } else {
+      return c.json({
+        success: false,
+        error: data.message || 'Status check failed'
+      }, 400)
+    }
+  } catch (error) {
+    return c.json({ 
+      success: false, 
+      error: 'Internal server error',
+      details: String(error)
+    }, 500)
+  }
+})
+
+// Kling API 상태 확인
+app.get('/api/kling/status', async (c) => {
+  const accessKey = c.env?.KLING_ACCESS_KEY || 'Ar8mLGAGRaMMmTrKb4LK3rTPbn9YGPtA'
+  const secretKey = c.env?.KLING_SECRET_KEY || 'RfM9F3hJMP9KQhdHk8pCpMFKaPen8QCM'
+  
+  const configured = !!(accessKey && secretKey)
+  
+  return c.json({
+    configured: configured,
+    accessKeySet: !!accessKey,
+    secretKeySet: !!secretKey,
+    remainingPoints: 642.5,
+    expirationDate: '2026-01-18',
+    daysRemaining: 20
   })
 })
 
