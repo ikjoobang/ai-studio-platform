@@ -14,7 +14,7 @@ type Bindings = {
   KLING_SECRET_KEY?: string
 }
 
-// API Keys (하드코딩 - 프로덕션에서는 환경변수 사용 권장)
+// API 키 (하드코딩 - 프로덕션에서는 환경변수 사용 권장)
 const API_KEYS = {
   FAL_API_KEY: 'b5a2b6f2-f0be-4837-b5e9-237fe8a44e8e:4c13ad7bcdbfbda051b140f84ce40524',
   IDEOGRAM_API_KEY: 'z9FQ5zQQfM1Tar8dhNANWJMPN2N_wcnfpGMaCKDQMiu0d2n6n-lL5rkPVKws_QtACrLRw5xR3ZpiuVUf9xHS_Q',
@@ -77,17 +77,17 @@ app.get('/', (c) => {
             </a>
             
             <div class="hidden md:flex items-center space-x-8">
-              <a href="#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
-              <a href="#tools" class="text-gray-300 hover:text-white transition-colors">AI Tools</a>
-              <a href="/generate-video" class="text-gray-300 hover:text-white transition-colors">Video</a>
-              <a href="#pricing" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
-              <a href="/dashboard" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+              <a href="#features" class="text-gray-300 hover:text-white transition-colors">기능</a>
+              <a href="#tools" class="text-gray-300 hover:text-white transition-colors">AI 도구</a>
+              <a href="/generate-video" class="text-gray-300 hover:text-white transition-colors">영상</a>
+              <a href="#pricing" class="text-gray-300 hover:text-white transition-colors">요금제</a>
+              <a href="/dashboard" class="text-gray-300 hover:text-white transition-colors">대시보드</a>
             </div>
             
             <div class="flex items-center space-x-4">
               <a href="/generate" class="hidden sm:inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-brand-500 to-purple-600 rounded-lg font-medium hover:opacity-90 transition-opacity">
                 <i class="fas fa-sparkles mr-2"></i>
-                Get Started
+                시작하기
               </a>
             </div>
           </div>
@@ -98,44 +98,44 @@ app.get('/', (c) => {
         <div class="max-w-6xl mx-auto text-center">
           <div class="inline-flex items-center px-4 py-2 rounded-full glass mb-8">
             <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-            <span class="text-sm text-gray-300">Credit-based · Valid for 1 year</span>
+            <span class="text-sm text-gray-300">크레딧 기반 · 1년간 유효</span>
           </div>
           
           <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-            <span class="gradient-text">Create with AI</span>
+            <span class="gradient-text">AI로 창작하세요</span>
             <br />
-            <span class="text-white">Unlimited Creativity</span>
+            <span class="text-white">무한한 창의력</span>
           </h1>
           
           <p class="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Nano Banana, Ideogram, Kling AI - all the best AI tools in one platform.
+            Nano Banana, Ideogram, Kling AI - 최고의 AI 도구를 하나의 플랫폼에서.
             <br class="hidden sm:block" />
-            Generate images, videos, and more with simple English prompts.
+            간단한 프롬프트로 이미지, 영상 등을 생성하세요.
           </p>
           
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <a href="/generate" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-500 to-purple-600 rounded-xl font-semibold text-lg hover:opacity-90 transition-all pulse-glow">
               <i class="fas fa-image mr-2"></i>
-              Generate Image
+              이미지 생성
             </a>
             <a href="/generate-video" class="w-full sm:w-auto px-8 py-4 glass rounded-xl font-semibold text-lg hover:bg-white/10 transition-all">
               <i class="fas fa-video mr-2"></i>
-              Generate Video
+              영상 생성
             </a>
           </div>
           
           <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto">
             <div class="glass rounded-xl p-4 sm:p-6">
               <div class="text-2xl sm:text-4xl font-bold gradient-text mb-1">80%</div>
-              <div class="text-xs sm:text-sm text-gray-400">Cost Savings</div>
+              <div class="text-xs sm:text-sm text-gray-400">비용 절감</div>
             </div>
             <div class="glass rounded-xl p-4 sm:p-6">
               <div class="text-2xl sm:text-4xl font-bold gradient-text mb-1">10x</div>
-              <div class="text-xs sm:text-sm text-gray-400">Faster</div>
+              <div class="text-xs sm:text-sm text-gray-400">더 빠른</div>
             </div>
             <div class="glass rounded-xl p-4 sm:p-6">
               <div class="text-2xl sm:text-4xl font-bold gradient-text mb-1">4K</div>
-              <div class="text-xs sm:text-sm text-gray-400">Quality</div>
+              <div class="text-xs sm:text-sm text-gray-400">품질</div>
             </div>
           </div>
         </div>
@@ -145,10 +145,10 @@ app.get('/', (c) => {
         <div class="max-w-7xl mx-auto">
           <div class="text-center mb-16">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span class="gradient-text">AI Tools</span> Collection
+              <span class="gradient-text">AI 도구</span> 모음
             </h2>
             <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-              Choose the right tool for your creative needs
+              창작 목적에 맞는 도구를 선택하세요
             </p>
           </div>
           
@@ -160,11 +160,11 @@ app.get('/', (c) => {
                     <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
                       <span class="text-3xl">🍌</span>
                     </div>
-                    <span class="px-3 py-1 text-xs font-medium bg-green-500/20 text-green-400 rounded-full">Image</span>
+                    <span class="px-3 py-1 text-xs font-medium bg-green-500/20 text-green-400 rounded-full">이미지</span>
                   </div>
                   <h3 class="text-xl font-semibold mb-2 group-hover:text-brand-400 transition-colors">Nano Banana</h3>
                   <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                    High-quality image generation with Fal.ai
+                    Fal.ai 기반 고품질 이미지 생성
                   </p>
                 </div>
               </div>
@@ -176,11 +176,11 @@ app.get('/', (c) => {
                   <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
                     <i class="fas fa-font text-2xl text-white"></i>
                   </div>
-                  <span class="px-3 py-1 text-xs font-medium bg-blue-500/20 text-blue-400 rounded-full">Logo</span>
+                  <span class="px-3 py-1 text-xs font-medium bg-blue-500/20 text-blue-400 rounded-full">로고</span>
                 </div>
                 <h3 class="text-xl font-semibold mb-2 group-hover:text-brand-400 transition-colors">Ideogram</h3>
                 <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                  Perfect for logos and text rendering
+                  로고 및 텍스트 렌더링에 최적
                 </p>
               </div>
             </a>
@@ -191,11 +191,11 @@ app.get('/', (c) => {
                   <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
                     <i class="fas fa-video text-2xl text-white"></i>
                   </div>
-                  <span class="px-3 py-1 text-xs font-medium bg-purple-500/20 text-purple-400 rounded-full">Video</span>
+                  <span class="px-3 py-1 text-xs font-medium bg-purple-500/20 text-purple-400 rounded-full">영상</span>
                 </div>
                 <h3 class="text-xl font-semibold mb-2 group-hover:text-brand-400 transition-colors">Kling 2.5 Turbo</h3>
                 <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                  Fast cinematic video generation
+                  빠른 시네마틱 영상 생성
                 </p>
               </div>
             </a>
@@ -206,11 +206,11 @@ app.get('/', (c) => {
                   <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
                     <i class="fas fa-film text-2xl text-white"></i>
                   </div>
-                  <span class="px-3 py-1 text-xs font-medium bg-red-500/20 text-red-400 rounded-full">Premium</span>
+                  <span class="px-3 py-1 text-xs font-medium bg-red-500/20 text-red-400 rounded-full">프리미엄</span>
                 </div>
                 <h3 class="text-xl font-semibold mb-2 group-hover:text-brand-400 transition-colors">Kling 2.1 Master</h3>
                 <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                  Premium quality video generation
+                  최고 품질 영상 생성
                 </p>
               </div>
             </a>
@@ -222,7 +222,7 @@ app.get('/', (c) => {
         <div class="max-w-5xl mx-auto">
           <div class="text-center mb-16">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Simple <span class="gradient-text">Pricing</span>
+              간단한 <span class="gradient-text">요금제</span>
             </h2>
           </div>
           
@@ -231,27 +231,27 @@ app.get('/', (c) => {
               <div class="text-center mb-6">
                 <h3 class="text-xl font-semibold mb-2">Starter</h3>
                 <div class="text-4xl font-bold mb-1">$29</div>
-                <p class="text-gray-400 text-sm">630 credits</p>
+                <p class="text-gray-400 text-sm">630 크레딧</p>
               </div>
               <ul class="space-y-3 mb-8 text-sm">
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>~63 images</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>All AI tools</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>1 year validity</li>
+                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>약 63장 이미지</li>
+                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>모든 AI 도구</li>
+                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>1년간 유효</li>
               </ul>
             </div>
             
             <div class="gradient-border card-hover">
               <div class="gradient-border-inner p-6 sm:p-8 relative">
-                <div class="absolute top-0 right-0 bg-gradient-to-r from-brand-500 to-purple-600 text-xs px-4 py-1 rounded-bl-xl">Popular</div>
+                <div class="absolute top-0 right-0 bg-gradient-to-r from-brand-500 to-purple-600 text-xs px-4 py-1 rounded-bl-xl">인기</div>
                 <div class="text-center mb-6">
                   <h3 class="text-xl font-semibold mb-2">Pro</h3>
                   <div class="text-4xl font-bold gradient-text mb-1">$59</div>
-                  <p class="text-gray-400 text-sm">1,500 credits</p>
+                  <p class="text-gray-400 text-sm">1,500 크레딧</p>
                 </div>
                 <ul class="space-y-3 mb-8 text-sm">
-                  <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>~150 images</li>
-                  <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Priority queue</li>
-                  <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>1 year validity</li>
+                  <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>약 150장 이미지</li>
+                  <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>우선 대기열</li>
+                  <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>1년간 유효</li>
                 </ul>
               </div>
             </div>
@@ -260,12 +260,12 @@ app.get('/', (c) => {
               <div class="text-center mb-6">
                 <h3 class="text-xl font-semibold mb-2">Business</h3>
                 <div class="text-4xl font-bold mb-1">$119</div>
-                <p class="text-gray-400 text-sm">3,500 credits</p>
+                <p class="text-gray-400 text-sm">3,500 크레딧</p>
               </div>
               <ul class="space-y-3 mb-8 text-sm">
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>~350 images</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Team sharing</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>1 year validity</li>
+                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>약 350장 이미지</li>
+                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>팀 공유</li>
+                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>1년간 유효</li>
               </ul>
             </div>
           </div>
@@ -279,9 +279,9 @@ app.get('/', (c) => {
               <span class="text-xl font-bold gradient-text">AI Studio</span>
             </div>
             <div class="flex items-center space-x-6 text-sm text-gray-400">
-              <a href="/api/docs" class="hover:text-white">API Docs</a>
-              <a href="/admin" class="hover:text-white">Admin</a>
-              <a href="/dashboard" class="hover:text-white">Dashboard</a>
+              <a href="/api/docs" class="hover:text-white">API 문서</a>
+              <a href="/admin" class="hover:text-white">관리자</a>
+              <a href="/dashboard" class="hover:text-white">대시보드</a>
             </div>
             <p class="text-sm text-gray-500">© 2024 AI Studio</p>
           </div>
@@ -317,9 +317,9 @@ app.get('/generate', (c) => {
           <div class="mb-8">
             <h1 class="text-3xl font-bold mb-2">
               <i class="fas fa-image text-brand-400 mr-3"></i>
-              AI Image Generation
+              AI 이미지 생성
             </h1>
-            <p class="text-gray-400">Create stunning images with Nano Banana & Ideogram</p>
+            <p class="text-gray-400">Nano Banana와 Ideogram으로 멋진 이미지를 만드세요</p>
           </div>
 
           <div class="grid lg:grid-cols-2 gap-8">
@@ -327,7 +327,7 @@ app.get('/generate', (c) => {
               <div class="glass rounded-2xl p-6">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-robot text-brand-400 mr-2"></i>
-                  Select AI Model
+                  AI 모델 선택
                 </h2>
                 <div class="grid grid-cols-2 gap-3">
                   <button id="btn-nano" class="p-4 rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border-2 border-yellow-500/50 transition-all">
@@ -338,7 +338,7 @@ app.get('/generate', (c) => {
                   <button id="btn-ideogram" class="p-4 rounded-xl glass border-2 border-transparent hover:border-white/20 transition-all">
                     <span class="text-2xl mb-2 block"><i class="fas fa-font text-cyan-400"></i></span>
                     <span class="font-medium">Ideogram</span>
-                    <span class="text-xs text-gray-400 block mt-1">Logo & Text</span>
+                    <span class="text-xs text-gray-400 block mt-1">로고 & 텍스트</span>
                   </button>
                 </div>
               </div>
@@ -346,23 +346,23 @@ app.get('/generate', (c) => {
               <div class="glass rounded-2xl p-6">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-pen-fancy text-brand-400 mr-2"></i>
-                  Describe your image (English)
+                  이미지를 설명하세요
                 </h2>
                 <textarea
                   id="prompt-input"
                   class="w-full h-32 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors resize-none"
-                  placeholder="Example: A cute dog running on the beach, a modern cafe logo, a whale flying in space..."
+                  placeholder="예: 해변을 달리는 귀여운 강아지, 현대적인 카페 로고, 우주를 나는 고래..."
                 ></textarea>
                 
                 <div class="mt-4">
-                  <span class="text-sm text-gray-400 mb-2 block">Quick Presets</span>
+                  <span class="text-sm text-gray-400 mb-2 block">빠른 프리셋</span>
                   <div class="flex flex-wrap gap-2">
-                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="realistic">📷 Realistic</button>
-                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="anime">🎨 Anime</button>
-                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="golden_hour">🌅 Golden Hour</button>
-                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="cinematic">🏙️ Cinematic</button>
-                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="fantasy">✨ Fantasy</button>
-                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="minimal">🎯 Minimal</button>
+                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="realistic">📷 실사</button>
+                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="anime">🎨 애니메</button>
+                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="golden_hour">🌅 골든아워</button>
+                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="cinematic">🏙️ 시네마틱</button>
+                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="fantasy">✨ 판타지</button>
+                    <button class="preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="minimal">🎯 미니멀</button>
                   </div>
                 </div>
               </div>
@@ -370,10 +370,10 @@ app.get('/generate', (c) => {
               <div class="glass rounded-2xl p-6">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-sliders text-brand-400 mr-2"></i>
-                  Settings
+                  설정
                 </h2>
                 <div class="mb-4">
-                  <label class="text-sm text-gray-400 mb-2 block">Aspect Ratio</label>
+                  <label class="text-sm text-gray-400 mb-2 block">화면 비율</label>
                   <div class="grid grid-cols-4 gap-2">
                     <button class="ratio-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10" data-ratio="1:1">1:1</button>
                     <button class="ratio-btn px-3 py-2 text-sm rounded-lg bg-brand-500/20 border border-brand-500/50" data-ratio="16:9">16:9</button>
@@ -385,7 +385,7 @@ app.get('/generate', (c) => {
 
               <button id="generate-btn" class="w-full py-4 bg-gradient-to-r from-brand-500 to-purple-600 rounded-xl font-semibold text-lg hover:opacity-90 transition-all pulse-glow flex items-center justify-center">
                 <i class="fas fa-sparkles mr-2"></i>
-                Generate Image
+                이미지 생성
               </button>
             </div>
 
@@ -393,19 +393,19 @@ app.get('/generate', (c) => {
               <div class="glass rounded-2xl p-6 min-h-[500px] lg:min-h-[600px] flex flex-col">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-eye text-brand-400 mr-2"></i>
-                  Preview
+                  미리보기
                 </h2>
                 <div id="preview-area" class="flex-1 flex items-center justify-center border-2 border-dashed border-white/10 rounded-xl">
                   <div class="text-center p-8">
                     <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-brand-500/20 to-purple-500/20 flex items-center justify-center mx-auto mb-4">
                       <i class="fas fa-image text-4xl text-gray-500"></i>
                     </div>
-                    <p class="text-gray-400 mb-2">Generated image will appear here</p>
+                    <p class="text-gray-400 mb-2">생성된 이미지가 여기에 표시됩니다</p>
                   </div>
                 </div>
                 <div id="download-buttons" class="mt-4 flex gap-3 hidden">
                   <a id="download-link" href="#" download class="flex-1 py-3 rounded-xl glass hover:bg-white/10 text-center">
-                    <i class="fas fa-download mr-2"></i>Download
+                    <i class="fas fa-download mr-2"></i>다운로드
                   </a>
                 </div>
               </div>
@@ -483,12 +483,12 @@ app.get('/generate', (c) => {
             const prompt = document.getElementById('prompt-input').value;
             
             if (!prompt.trim()) {
-              alert('Please enter a prompt in English');
+              alert('프롬프트를 입력해주세요 in English');
               return;
             }
             
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Generating...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>생성 중...';
             btn.disabled = true;
             
             try {
@@ -511,9 +511,9 @@ app.get('/generate', (c) => {
                 document.getElementById('download-buttons').classList.remove('hidden');
                 document.getElementById('download-link').href = data.imageUrl;
                 
-                btn.innerHTML = '<i class="fas fa-check mr-2"></i>Generated!';
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i>생성 완료!';
               } else {
-                throw new Error(data.error || 'Generation failed');
+                throw new Error(data.error || '생성 실패');
               }
             } catch (error) {
               alert('Error: ' + error.message);
@@ -547,11 +547,11 @@ app.get('/generate-video', (c) => {
             <div class="flex items-center space-x-4">
               <div class="hidden sm:flex items-center px-3 py-1.5 bg-yellow-500/20 rounded-lg">
                 <i class="fas fa-coins text-yellow-400 mr-2"></i>
-                <span class="text-yellow-400 text-sm">642.5 Points</span>
+                <span class="text-yellow-400 text-sm">642.5 포인트</span>
               </div>
               <div class="hidden sm:flex items-center px-3 py-1.5 bg-red-500/20 rounded-lg">
                 <i class="fas fa-clock text-red-400 mr-2"></i>
-                <span class="text-red-400 text-sm">Expires: 2026-01-18</span>
+                <span class="text-red-400 text-sm">만료: 2026-01-18</span>
               </div>
               <a href="/generate" class="px-4 py-2 glass rounded-lg hover:bg-white/10">Image</a>
               <a href="/" class="text-gray-300 hover:text-white"><i class="fas fa-home text-xl"></i></a>
@@ -565,9 +565,9 @@ app.get('/generate-video', (c) => {
           <div class="mb-8">
             <h1 class="text-3xl font-bold mb-2">
               <i class="fas fa-video text-purple-400 mr-3"></i>
-              AI Video Generation
+              AI 영상 생성
             </h1>
-            <p class="text-gray-400">Create cinematic videos with Kling AI (V2.1 Master & V2.5 Turbo)</p>
+            <p class="text-gray-400">Kling AI로 시네마틱 영상을 만드세요 (V2.1 Master & V2.5 Turbo)</p>
           </div>
 
           <div class="grid lg:grid-cols-2 gap-8">
@@ -594,7 +594,7 @@ app.get('/generate-video', (c) => {
               <div class="glass rounded-2xl p-6">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-pen-fancy text-purple-400 mr-2"></i>
-                  Describe your video (English)
+                  영상을 설명하세요 (English)
                 </h2>
                 <textarea
                   id="video-prompt"
@@ -603,14 +603,14 @@ app.get('/generate-video', (c) => {
                 ></textarea>
                 
                 <div class="mt-4">
-                  <span class="text-sm text-gray-400 mb-2 block">Quick Presets</span>
+                  <span class="text-sm text-gray-400 mb-2 block">빠른 프리셋</span>
                   <div class="flex flex-wrap gap-2">
-                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="cinematic">🎬 Cinematic</button>
-                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="slow_motion">🌊 Slow Motion</button>
-                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="fantasy">✨ Fantasy</button>
-                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="night_city">🏙️ Night City</button>
-                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="drone">🚁 Drone Shot</button>
-                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="action">💥 Action</button>
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="cinematic">🎬 시네마틱</button>
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="slow_motion">🌊 슬로우 모션</button>
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="fantasy">✨ 판타지</button>
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="night_city">🏙️ 야경</button>
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="drone">🚁 드론 촬영</button>
+                    <button class="video-preset-btn px-3 py-1.5 text-xs rounded-lg glass hover:bg-white/10 transition-all" data-preset="action">💥 액션</button>
                   </div>
                 </div>
               </div>
@@ -618,18 +618,18 @@ app.get('/generate-video', (c) => {
               <div class="glass rounded-2xl p-6">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-sliders text-purple-400 mr-2"></i>
-                  Settings
+                  설정
                 </h2>
                 <div class="space-y-4">
                   <div>
-                    <label class="text-sm text-gray-400 mb-2 block">Duration</label>
+                    <label class="text-sm text-gray-400 mb-2 block">영상 길이</label>
                     <div class="grid grid-cols-2 gap-2">
-                      <button class="duration-btn px-3 py-2 text-sm rounded-lg bg-purple-500/20 border border-purple-500/50" data-duration="5">5 seconds</button>
-                      <button class="duration-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10" data-duration="10">10 seconds</button>
+                      <button class="duration-btn px-3 py-2 text-sm rounded-lg bg-purple-500/20 border border-purple-500/50" data-duration="5">5초</button>
+                      <button class="duration-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10" data-duration="10">10초</button>
                     </div>
                   </div>
                   <div>
-                    <label class="text-sm text-gray-400 mb-2 block">Aspect Ratio</label>
+                    <label class="text-sm text-gray-400 mb-2 block">화면 비율</label>
                     <div class="grid grid-cols-3 gap-2">
                       <button class="video-ratio-btn px-3 py-2 text-sm rounded-lg bg-purple-500/20 border border-purple-500/50" data-ratio="16:9">16:9</button>
                       <button class="video-ratio-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10" data-ratio="9:16">9:16</button>
@@ -641,7 +641,7 @@ app.get('/generate-video', (c) => {
 
               <button id="generate-video-btn" class="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl font-semibold text-lg hover:opacity-90 transition-all pulse-glow flex items-center justify-center">
                 <i class="fas fa-film mr-2"></i>
-                Generate Video
+                영상 생성
                 <span id="points-display" class="ml-2 px-2 py-0.5 bg-white/20 rounded text-sm">~25 points</span>
               </button>
             </div>
@@ -650,7 +650,7 @@ app.get('/generate-video', (c) => {
               <div class="glass rounded-2xl p-6 min-h-[500px] lg:min-h-[600px] flex flex-col">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-play-circle text-purple-400 mr-2"></i>
-                  Preview
+                  미리보기
                 </h2>
                 <div id="video-preview-area" class="flex-1 flex items-center justify-center border-2 border-dashed border-white/10 rounded-xl">
                   <div class="text-center p-8">
@@ -663,7 +663,7 @@ app.get('/generate-video', (c) => {
                 </div>
                 <div id="video-download-buttons" class="mt-4 flex gap-3 hidden">
                   <a id="video-download-link" href="#" download class="flex-1 py-3 rounded-xl glass hover:bg-white/10 text-center">
-                    <i class="fas fa-download mr-2"></i>Download
+                    <i class="fas fa-download mr-2"></i>다운로드
                   </a>
                 </div>
               </div>
@@ -675,8 +675,8 @@ app.get('/generate-video', (c) => {
                 </h3>
                 <div class="space-y-2 text-sm text-gray-400">
                   <div class="flex justify-between">
-                    <span>Remaining Points</span>
-                    <span class="text-white font-medium">642.5 Points</span>
+                    <span>Remaining 포인트</span>
+                    <span class="text-white font-medium">642.5 포인트</span>
                   </div>
                   <div class="flex justify-between">
                     <span>Expiration</span>
@@ -696,7 +696,7 @@ app.get('/generate-video', (c) => {
       <script dangerouslySetInnerHTML={{
         __html: `
           let selectedVideoModel = 'kling-v2-5-turbo';
-          let selectedDuration = '5';
+          let selected영상 길이 = '5';
           let selectedVideoRatio = '16:9';
           let selectedVideoPreset = '';
           
@@ -720,30 +720,30 @@ app.get('/generate-video', (c) => {
                 selectedVideoModel = 'kling-v2-5-turbo';
                 this.classList.remove('border-transparent', 'glass');
                 this.classList.add('border-purple-500/50', 'bg-gradient-to-br', 'from-purple-500/20', 'to-pink-500/20');
-                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~25 points' : '~50 points';
+                document.getElementById('points-display').textContent = selected영상 길이 === '5' ? '~25 points' : '~50 points';
               } else {
                 selectedVideoModel = 'kling-v2-1-master';
                 this.classList.remove('border-transparent', 'glass');
                 this.classList.add('border-yellow-500/50', 'bg-gradient-to-br', 'from-yellow-500/20', 'to-orange-500/20');
-                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~35 points' : '~70 points';
+                document.getElementById('points-display').textContent = selected영상 길이 === '5' ? '~35 points' : '~70 points';
               }
             });
           });
           
-          // Duration selection
+          // 영상 길이 selection
           document.querySelectorAll('.duration-btn').forEach(btn => {
             btn.addEventListener('click', function() {
               document.querySelectorAll('.duration-btn').forEach(b => {
                 b.className = 'duration-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10';
               });
               this.className = 'duration-btn px-3 py-2 text-sm rounded-lg bg-purple-500/20 border border-purple-500/50';
-              selectedDuration = this.dataset.duration;
+              selected영상 길이 = this.dataset.duration;
               
               // Update points display
               if (selectedVideoModel === 'kling-v2-5-turbo') {
-                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~25 points' : '~50 points';
+                document.getElementById('points-display').textContent = selected영상 길이 === '5' ? '~25 points' : '~50 points';
               } else {
-                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~35 points' : '~70 points';
+                document.getElementById('points-display').textContent = selected영상 길이 === '5' ? '~35 points' : '~70 points';
               }
             });
           });
@@ -783,7 +783,7 @@ app.get('/generate-video', (c) => {
             const prompt = document.getElementById('video-prompt').value;
             
             if (!prompt.trim()) {
-              alert('Please enter a prompt in English');
+              alert('프롬프트를 입력해주세요 in English');
               return;
             }
             
@@ -798,7 +798,7 @@ app.get('/generate-video', (c) => {
                 body: JSON.stringify({
                   prompt: prompt,
                   model: selectedVideoModel,
-                  duration: selectedDuration,
+                  duration: selected영상 길이,
                   aspectRatio: selectedVideoRatio
                 })
               });
@@ -809,12 +809,12 @@ app.get('/generate-video', (c) => {
                 btn.innerHTML = '<i class="fas fa-check mr-2"></i>Submitted!';
                 
                 const previewArea = document.getElementById('video-preview-area');
-                previewArea.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i><p class="text-gray-400">Generating video...</p><p class="text-xs text-gray-500 mt-2">Task ID: ' + data.taskId + '</p><p class="text-xs text-gray-500">This may take 1-3 minutes</p></div>';
+                previewArea.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i><p class="text-gray-400">생성 중...deo...</p><p class="text-xs text-gray-500 mt-2">Task ID: ' + data.taskId + '</p><p class="text-xs text-gray-500">This may take 1-3 minutes</p></div>';
                 
                 // Start polling for status
                 pollVideoStatus(data.taskId);
               } else {
-                throw new Error(data.error || 'Generation failed');
+                throw new Error(data.error || '생성 실패');
               }
             } catch (error) {
               alert('Error: ' + error.message);
@@ -834,14 +834,14 @@ app.get('/generate-video', (c) => {
                 
                 const previewArea = document.getElementById('video-preview-area');
                 
-                if (data.status === 'completed' && data.videoUrl) {
+                if (data.status === '완료' && data.videoUrl) {
                   previewArea.innerHTML = '<video controls class="w-full h-full rounded-xl" src="' + data.videoUrl + '"></video>';
                   document.getElementById('video-download-buttons').classList.remove('hidden');
                   document.getElementById('video-download-link').href = data.videoUrl;
-                } else if (data.status === 'failed') {
-                  previewArea.innerHTML = '<div class="text-center text-red-400"><i class="fas fa-exclamation-circle text-4xl mb-4"></i><p>Generation failed</p><p class="text-xs mt-2">' + (data.error || 'Unknown error') + '</p></div>';
+                } else if (data.status === '실패') {
+                  previewArea.innerHTML = '<div class="text-center text-red-400"><i class="fas fa-exclamation-circle text-4xl mb-4"></i><p>생성 실패</p><p class="text-xs mt-2">' + (data.error || 'Unknown error') + '</p></div>';
                 } else {
-                  previewArea.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i><p class="text-gray-400">Generating video...</p><p class="text-xs text-gray-500 mt-2">Status: ' + data.rawStatus + '</p></div>';
+                  previewArea.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i><p class="text-gray-400">생성 중...deo...</p><p class="text-xs text-gray-500 mt-2">Status: ' + data.rawStatus + '</p></div>';
                   setTimeout(checkStatus, 5000);
                 }
               } catch (error) {
@@ -871,7 +871,7 @@ app.get('/dashboard', (c) => {
             <div class="flex items-center space-x-4">
               <a href="/generate" class="px-4 py-2 glass rounded-lg hover:bg-white/10">Image</a>
               <a href="/generate-video" class="px-4 py-2 glass rounded-lg hover:bg-white/10">Video</a>
-              <a href="/admin" class="px-4 py-2 glass rounded-lg hover:bg-white/10">Admin</a>
+              <a href="/admin" class="px-4 py-2 glass rounded-lg hover:bg-white/10">관리자</a>
             </div>
           </div>
         </div>
@@ -879,7 +879,7 @@ app.get('/dashboard', (c) => {
 
       <main class="pt-24 pb-12 px-4 min-h-screen">
         <div class="max-w-7xl mx-auto">
-          <h1 class="text-3xl font-bold mb-8">Dashboard</h1>
+          <h1 class="text-3xl font-bold mb-8">대시보드</h1>
           
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div class="glass rounded-2xl p-6">
@@ -894,7 +894,7 @@ app.get('/dashboard', (c) => {
                 <i class="fas fa-video text-2xl text-purple-400"></i>
               </div>
               <div class="text-3xl font-bold mb-1">642.5</div>
-              <div class="text-sm text-gray-400">Kling Points</div>
+              <div class="text-sm text-gray-400">Kling 포인트</div>
             </div>
             <div class="glass rounded-2xl p-6">
               <div class="flex items-center justify-between mb-4">
@@ -948,20 +948,20 @@ app.get('/dashboard', (c) => {
 
           <div class="glass rounded-2xl p-6">
             <div class="flex items-center justify-between mb-6">
-              <h2 class="text-xl font-semibold">Quick Links</h2>
+              <h2 class="text-xl font-semibold">빠른 링크</h2>
             </div>
             <div class="grid sm:grid-cols-3 gap-4">
               <a href="/generate" class="p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all text-center">
                 <i class="fas fa-image text-brand-400 text-2xl mb-2"></i>
-                <p class="font-medium">Generate Image</p>
+                <p class="font-medium">이미지 생성</p>
               </a>
               <a href="/generate-video" class="p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all text-center">
                 <i class="fas fa-video text-purple-400 text-2xl mb-2"></i>
-                <p class="font-medium">Generate Video</p>
+                <p class="font-medium">영상 생성</p>
               </a>
               <a href="/api/docs" class="p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all text-center">
                 <i class="fas fa-book text-green-400 text-2xl mb-2"></i>
-                <p class="font-medium">API Docs</p>
+                <p class="font-medium">API 문서</p>
               </a>
             </div>
           </div>
@@ -982,10 +982,10 @@ app.get('/admin', (c) => {
               <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center">
                 <i class="fas fa-shield-halved text-white text-lg"></i>
               </div>
-              <span class="text-xl font-bold gradient-text">Admin Panel</span>
+              <span class="text-xl font-bold gradient-text">관리자 Panel</span>
             </a>
             <div class="flex items-center space-x-4">
-              <a href="/dashboard" class="px-4 py-2 glass rounded-lg hover:bg-white/10">Dashboard</a>
+              <a href="/dashboard" class="px-4 py-2 glass rounded-lg hover:bg-white/10">대시보드</a>
               <a href="/" class="px-4 py-2 glass rounded-lg hover:bg-white/10">Home</a>
             </div>
           </div>
@@ -994,7 +994,7 @@ app.get('/admin', (c) => {
 
       <main class="pt-24 pb-12 px-4 min-h-screen">
         <div class="max-w-7xl mx-auto">
-          <h1 class="text-3xl font-bold mb-8">Admin Panel</h1>
+          <h1 class="text-3xl font-bold mb-8">관리자 Panel</h1>
           
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div class="glass rounded-2xl p-6">
@@ -1007,9 +1007,9 @@ app.get('/admin', (c) => {
             <div class="glass rounded-2xl p-6">
               <div class="flex items-center mb-4">
                 <i class="fas fa-key text-2xl text-green-400 mr-3"></i>
-                <span class="text-sm text-gray-400">API Keys</span>
+                <span class="text-sm text-gray-400">API 키</span>
               </div>
-              <div class="text-2xl font-bold text-green-400">4 Active</div>
+              <div class="text-2xl font-bold text-green-400">4 활성</div>
             </div>
             <div class="glass rounded-2xl p-6">
               <div class="flex items-center mb-4">
@@ -1036,7 +1036,7 @@ app.get('/admin', (c) => {
                     <span class="font-medium">Fal.ai (Nano Banana)</span>
                     <p class="text-xs text-gray-400 mt-1">b5a2b6f2-f0be-****-****-************</p>
                   </div>
-                  <span class="text-green-400">✓ Active</span>
+                  <span class="text-green-400">✓ 활성</span>
                 </div>
               </div>
               <div class="p-4 bg-green-500/10 rounded-xl border border-green-500/30">
@@ -1045,7 +1045,7 @@ app.get('/admin', (c) => {
                     <span class="font-medium">Ideogram</span>
                     <p class="text-xs text-gray-400 mt-1">z9FQ5zQQ****************************</p>
                   </div>
-                  <span class="text-green-400">✓ Active</span>
+                  <span class="text-green-400">✓ 활성</span>
                 </div>
               </div>
               <div class="p-4 bg-green-500/10 rounded-xl border border-green-500/30">
@@ -1054,7 +1054,7 @@ app.get('/admin', (c) => {
                     <span class="font-medium">Kling AI (Access Key)</span>
                     <p class="text-xs text-gray-400 mt-1">Ar8mLGAG****************************</p>
                   </div>
-                  <span class="text-green-400">✓ Active</span>
+                  <span class="text-green-400">✓ 활성</span>
                 </div>
               </div>
               <div class="p-4 bg-green-500/10 rounded-xl border border-green-500/30">
@@ -1063,20 +1063,20 @@ app.get('/admin', (c) => {
                     <span class="font-medium">Kling AI (Secret Key)</span>
                     <p class="text-xs text-gray-400 mt-1">RfM9F3hJ****************************</p>
                   </div>
-                  <span class="text-green-400">✓ Active</span>
+                  <span class="text-green-400">✓ 활성</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="glass rounded-2xl p-6">
-            <h2 class="text-xl font-semibold mb-6">Quick Links</h2>
+            <h2 class="text-xl font-semibold mb-6">빠른 링크</h2>
             <div class="grid sm:grid-cols-3 gap-4">
               <a href="/api/docs" class="p-4 bg-white/5 rounded-xl hover:bg-white/10">
-                <i class="fas fa-book text-brand-400 mr-2"></i>API Docs
+                <i class="fas fa-book text-brand-400 mr-2"></i>API 문서
               </a>
               <a href="/api/health" class="p-4 bg-white/5 rounded-xl hover:bg-white/10">
-                <i class="fas fa-heartbeat text-green-400 mr-2"></i>Health Check
+                <i class="fas fa-heartbeat text-green-400 mr-2"></i>상태 확인
               </a>
               <a href="https://github.com/ikjoobang/ai-studio-platform" target="_blank" class="p-4 bg-white/5 rounded-xl hover:bg-white/10">
                 <i class="fab fa-github text-white mr-2"></i>GitHub
@@ -1159,7 +1159,7 @@ app.get('/api/docs', (c) => {
 
 // ==================== API Routes ====================
 
-// Health Check
+// 상태 확인
 app.get('/api/health', (c) => {
   return c.json({ 
     status: 'ok', 
@@ -1197,7 +1197,7 @@ app.get('/api/cache/info', (c) => {
   })
 })
 
-// Export History
+// 내보내기 기록
 app.get('/api/export/history', (c) => {
   const historyData = `AI Studio - Generation Report
 ================================
@@ -1205,13 +1205,13 @@ Generated: ${new Date().toISOString()}
 Version: 2.0.0
 
 [API Status]
-- Fal.ai (Nano Banana): Active
-- Ideogram: Active  
-- Kling V2.5 Turbo: Active
-- Kling V2.1 Master: Active
+- Fal.ai (Nano Banana): 활성
+- Ideogram: 활성  
+- Kling V2.5 Turbo: 활성
+- Kling V2.1 Master: 활성
 
 [Kling AI Status]
-- Remaining Points: 642.5
+- Remaining 포인트: 642.5
 - Expiration: 2026-01-18
 - Days Remaining: ~20 days
 
@@ -1243,7 +1243,7 @@ app.post('/api/generate-image', async (c) => {
     const { prompt, model, aspectRatio } = body
     
     if (!prompt) {
-      return c.json({ success: false, error: 'Please enter a prompt' }, 400)
+      return c.json({ success: false, error: '프롬프트를 입력해주세요' }, 400)
     }
 
     const falApiKey = c.env?.FAL_API_KEY || API_KEYS.FAL_API_KEY
@@ -1366,7 +1366,7 @@ app.post('/api/generate-video', async (c) => {
     const { prompt, model, duration, aspectRatio } = body
     
     if (!prompt) {
-      return c.json({ success: false, error: 'Please enter a prompt' }, 400)
+      return c.json({ success: false, error: '프롬프트를 입력해주세요' }, 400)
     }
 
     const accessKey = c.env?.KLING_ACCESS_KEY || API_KEYS.KLING_ACCESS_KEY
@@ -1406,7 +1406,7 @@ app.post('/api/generate-video', async (c) => {
         success: true,
         taskId: data.data.task_id,
         model: modelName,
-        message: 'Video generation started'
+        message: '영상 생성이 시작되었습니다'
       })
     } else {
       return c.json({ success: false, error: data.message || 'Kling API error', details: data }, 400)
@@ -1448,12 +1448,12 @@ app.get('/api/video-status/:taskId', async (c) => {
       
       return c.json({
         success: true,
-        status: status === 'succeed' ? 'completed' : status === 'failed' ? 'failed' : 'processing',
+        status: status === 'succeed' ? '완료' : status === '실패' ? '실패' : '처리 중',
         videoUrl: videoUrl,
         rawStatus: status
       })
     } else {
-      return c.json({ success: false, error: data.message || 'Status check failed' }, 400)
+      return c.json({ success: false, error: data.message || 'Status check 실패' }, 400)
     }
   } catch (error) {
     return c.json({ success: false, error: String(error) }, 500)
@@ -1464,7 +1464,7 @@ app.get('/api/video-status/:taskId', async (c) => {
 app.get('/api/kling/status', (c) => {
   return c.json({
     configured: true,
-    remainingPoints: 642.5,
+    remaining포인트: 642.5,
     expirationDate: '2026-01-18',
     daysRemaining: 20,
     models: ['kling-v2-5-turbo', 'kling-v2-1-master']
@@ -1486,16 +1486,16 @@ app.get('/api/video-models', (c) => {
       {
         id: 'kling-v2-5-turbo',
         name: 'Kling 2.5 Turbo',
-        description: 'Fast cinematic video generation',
+        description: '빠른 시네마틱 영상 생성',
         cost: '25 points / 5s',
         features: ['Fast generation', '30% cheaper', 'High quality']
       },
       {
         id: 'kling-v2-1-master',
         name: 'Kling 2.1 Master',
-        description: 'Premium quality video generation',
+        description: '최고 품질 영상 생성',
         cost: '35 points / 5s',
-        features: ['Best quality', 'Cinematic motion', '1080p output']
+        features: ['Best quality', '시네마틱 motion', '1080p output']
       }
     ]
   })
