@@ -684,7 +684,7 @@ app.get('/generate-video', (c) => {
       <script dangerouslySetInnerHTML={{
         __html: `
           let selectedVideoModel = 'kling-v2-5-turbo';
-          let selected영상 길이 = '5';
+          let selectedDuration = '5';
           let selectedVideoRatio = '16:9';
           let selectedVideoPreset = '';
           
@@ -708,12 +708,12 @@ app.get('/generate-video', (c) => {
                 selectedVideoModel = 'kling-v2-5-turbo';
                 this.classList.remove('border-transparent', 'glass');
                 this.classList.add('border-purple-500/50', 'bg-gradient-to-br', 'from-purple-500/20', 'to-pink-500/20');
-                document.getElementById('points-display').textContent = selected영상 길이 === '5' ? '~25 points' : '~50 points';
+                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~25 points' : '~50 points';
               } else {
                 selectedVideoModel = 'kling-v2-1-master';
                 this.classList.remove('border-transparent', 'glass');
                 this.classList.add('border-yellow-500/50', 'bg-gradient-to-br', 'from-yellow-500/20', 'to-orange-500/20');
-                document.getElementById('points-display').textContent = selected영상 길이 === '5' ? '~35 points' : '~70 points';
+                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~35 points' : '~70 points';
               }
             });
           });
@@ -725,13 +725,13 @@ app.get('/generate-video', (c) => {
                 b.className = 'duration-btn px-3 py-2 text-sm rounded-lg glass hover:bg-white/10';
               });
               this.className = 'duration-btn px-3 py-2 text-sm rounded-lg bg-purple-500/20 border border-purple-500/50';
-              selected영상 길이 = this.dataset.duration;
+              selectedDuration = this.dataset.duration;
               
               // Update points display
               if (selectedVideoModel === 'kling-v2-5-turbo') {
-                document.getElementById('points-display').textContent = selected영상 길이 === '5' ? '~25 points' : '~50 points';
+                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~25 points' : '~50 points';
               } else {
-                document.getElementById('points-display').textContent = selected영상 길이 === '5' ? '~35 points' : '~70 points';
+                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~35 points' : '~70 points';
               }
             });
           });
@@ -786,7 +786,7 @@ app.get('/generate-video', (c) => {
                 body: JSON.stringify({
                   prompt: prompt,
                   model: selectedVideoModel,
-                  duration: selected영상 길이,
+                  duration: selectedDuration,
                   aspectRatio: selectedVideoRatio
                 })
               });
