@@ -567,18 +567,18 @@ app.get('/generate-video', (c) => {
               <div class="glass rounded-2xl p-6">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-film text-purple-400 mr-2"></i>
-                  Select Model
+                  모델 선택
                 </h2>
                 <div class="grid grid-cols-2 gap-3">
                   <button id="model-turbo" class="p-4 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-2 border-purple-500/50 transition-all">
                     <i class="fas fa-bolt text-2xl mb-2 block text-purple-400"></i>
                     <span class="font-medium">V2.5 Turbo</span>
-                    <span class="text-xs text-gray-400 block mt-1">Fast · 25 points/5s</span>
+                    <span class="text-xs text-gray-400 block mt-1">빠름 · 저렴</span>
                   </button>
                   <button id="model-master" class="p-4 rounded-xl glass border-2 border-transparent hover:border-white/20 transition-all">
                     <i class="fas fa-crown text-2xl mb-2 block text-yellow-400"></i>
                     <span class="font-medium">V2.1 Master</span>
-                    <span class="text-xs text-gray-400 block mt-1">Premium · 35 points/5s</span>
+                    <span class="text-xs text-gray-400 block mt-1">프리미엄 · 최고품질</span>
                   </button>
                 </div>
               </div>
@@ -586,12 +586,12 @@ app.get('/generate-video', (c) => {
               <div class="glass rounded-2xl p-6">
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <i class="fas fa-pen-fancy text-purple-400 mr-2"></i>
-                  영상을 설명하세요 (English)
+                  영상을 설명하세요
                 </h2>
                 <textarea
                   id="video-prompt"
                   class="w-full h-32 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors resize-none"
-                  placeholder="Example: A dog running on the beach at sunset, a spaceship flying through asteroid belt..."
+                  placeholder="예: 해변에서 뛰어노는 강아지, 우주를 날아가는 우주선, 숲속을 걷는 사람..."
                 ></textarea>
                 
                 <div class="mt-4">
@@ -633,8 +633,7 @@ app.get('/generate-video', (c) => {
 
               <button id="generate-video-btn" class="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl font-semibold text-lg hover:opacity-90 transition-all pulse-glow flex items-center justify-center">
                 <i class="fas fa-film mr-2"></i>
-                영상 생성
-                <span id="points-display" class="ml-2 px-2 py-0.5 bg-white/20 rounded text-sm">~25 points</span>
+                영상 생성하기
               </button>
             </div>
 
@@ -649,8 +648,8 @@ app.get('/generate-video', (c) => {
                     <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mx-auto mb-4">
                       <i class="fas fa-video text-4xl text-gray-500"></i>
                     </div>
-                    <p class="text-gray-400 mb-2">Generated video will appear here</p>
-                    <p class="text-xs text-gray-500">Generation time: ~1-3 minutes</p>
+                    <p class="text-gray-400 mb-2">생성된 영상이 여기에 표시됩니다</p>
+                    <p class="text-xs text-gray-500">생성 시간: 약 1-3분</p>
                   </div>
                 </div>
                 <div id="video-download-buttons" class="mt-4 flex gap-3 hidden">
@@ -708,12 +707,12 @@ app.get('/generate-video', (c) => {
                 selectedVideoModel = 'kling-v2-5-turbo';
                 this.classList.remove('border-transparent', 'glass');
                 this.classList.add('border-purple-500/50', 'bg-gradient-to-br', 'from-purple-500/20', 'to-pink-500/20');
-                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~25 points' : '~50 points';
+                
               } else {
                 selectedVideoModel = 'kling-v2-1-master';
                 this.classList.remove('border-transparent', 'glass');
                 this.classList.add('border-yellow-500/50', 'bg-gradient-to-br', 'from-yellow-500/20', 'to-orange-500/20');
-                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~35 points' : '~70 points';
+                
               }
             });
           });
@@ -729,9 +728,9 @@ app.get('/generate-video', (c) => {
               
               // Update points display
               if (selectedVideoModel === 'kling-v2-5-turbo') {
-                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~25 points' : '~50 points';
+                
               } else {
-                document.getElementById('points-display').textContent = selectedDuration === '5' ? '~35 points' : '~70 points';
+                
               }
             });
           });
