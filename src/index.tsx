@@ -12,6 +12,7 @@ type Bindings = {
   IDEOGRAM_API_KEY?: string
   KLING_ACCESS_KEY?: string
   KLING_SECRET_KEY?: string
+  GEMINI_API_KEY?: string
 }
 
 // API 키 (하드코딩 - 프로덕션에서는 환경변수 사용 권장)
@@ -19,7 +20,79 @@ const API_KEYS = {
   FAL_API_KEY: 'b5a2b6f2-f0be-4837-b5e9-237fe8a44e8e:4c13ad7bcdbfbda051b140f84ce40524',
   IDEOGRAM_API_KEY: 'z9FQ5zQQfM1Tar8dhNANWJMPN2N_wcnfpGMaCKDQMiu0d2n6n-lL5rkPVKws_QtACrLRw5xR3ZpiuVUf9xHS_Q',
   KLING_ACCESS_KEY: 'Ar8mLGAGRaMMmTrKb4LK3rTPbn9YGPtA',
-  KLING_SECRET_KEY: 'RfM9F3hJMP9KQhdHk8pCpMFKaPen8QCM'
+  KLING_SECRET_KEY: 'RfM9F3hJMP9KQhdHk8pCpMFKaPen8QCM',
+  GEMINI_API_KEY: 'AIzaSyDmlCz_Fp6pe54dMuDbTqvEnOxLUl1B9LA'
+}
+
+// ==================== Gemini API 연동 (나노바나나 레시피북) ====================
+async function callGeminiAPI(apiKey: string, prompt: string): Promise<string> {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+  
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 2048,
+      }
+    })
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`Gemini API error: ${error}`);
+  }
+
+  const data = await response.json() as any;
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+}
+
+// 나노바나나 레시피북 기반 AI 프롬프트 생성 시스템
+const NANOBANANA_SYSTEM_PROMPT = `당신은 상업용 이미지 생성을 위한 전문 프롬프트 엔지니어입니다.
+나노바나나 레시피북의 스타일 가이드를 기반으로 사용자의 한국어 요청을 고품질 영어 프롬프트로 변환합니다.
+
+## 최우선 규칙 (절대 준수)
+1. **반드시 "Asian Korean" 명시**: 모든 인물에 "Asian Korean woman", "Asian Korean man", "Asian Korean ethnicity" 필수 포함
+2. **인종 강조**: "East Asian features", "Korean facial features", "Asian skin tone" 반드시 추가
+3. **손 표현**: "Asian Korean woman's elegant hands", "slender Asian fingers" 등 아시아인 손 명시
+
+## 스킨케어/뷰티 전용 템플릿
+프롬프트 시작은 반드시: "Ultra-realistic photograph of Asian Korean woman" 또는 "Close-up of Asian Korean hands"
+
+### 필링/스킨케어 장면:
+- "Asian Korean woman's delicate hands with slender fingers applying peeling gel"
+- "Asian Korean beauty model receiving facial treatment"  
+- "Asian Korean skin with glass skin effect, porcelain complexion"
+- "Korean K-beauty advertisement style, professional studio lighting"
+
+### 조명 규칙:
+- 뷰티: "soft diffused ring light", "beauty dish lighting"
+- 제품: "clean white studio background", "soft box lighting"
+
+### 품질 태그 (항상 끝에 추가):
+- "8K resolution, ultra-detailed, professional commercial photography, Korean beauty advertisement"
+
+## 출력 형식
+영어 프롬프트만 출력하세요. 설명 없이 프롬프트만. 반드시 "Asian Korean"을 포함하세요.`;
+
+// Gemini를 사용한 한글→영어 프롬프트 변환
+async function translatePromptWithGemini(koreanPrompt: string, geminiApiKey: string): Promise<string> {
+  const fullPrompt = `${NANOBANANA_SYSTEM_PROMPT}
+
+사용자 요청: ${koreanPrompt}
+
+위 요청을 고품질 상업 이미지 생성용 영어 프롬프트로 변환하세요:`;
+
+  try {
+    const result = await callGeminiAPI(geminiApiKey, fullPrompt);
+    // 결과에서 따옴표 제거 및 정리
+    return result.replace(/^["']|["']$/g, '').trim();
+  } catch (error) {
+    console.error('Gemini API error:', error);
+    throw error;
+  }
 }
 
 // 영어 프리셋 정의
@@ -1281,13 +1354,28 @@ app.post('/api/generate-image', async (c) => {
       return c.json({ success: false, error: '프롬프트를 입력해주세요' }, 400)
     }
 
-    // 한글 프롬프트를 영어로 변환
-    const translatedPrompt = translateKoreanPrompt(prompt)
-    console.log('Original prompt:', prompt)
-    console.log('Translated prompt:', translatedPrompt)
-
     const falApiKey = c.env?.FAL_API_KEY || API_KEYS.FAL_API_KEY
     const ideogramApiKey = c.env?.IDEOGRAM_API_KEY || API_KEYS.IDEOGRAM_API_KEY
+    const geminiApiKey = c.env?.GEMINI_API_KEY || API_KEYS.GEMINI_API_KEY
+
+    // 한글이 포함되어 있으면 Gemini로 프롬프트 변환 (나노바나나 레시피북 스타일)
+    let translatedPrompt = prompt
+    const hasKorean = /[가-힣]/.test(prompt)
+    
+    if (hasKorean) {
+      try {
+        console.log('Korean detected, using Gemini for translation...')
+        translatedPrompt = await translatePromptWithGemini(prompt, geminiApiKey)
+        console.log('Gemini translated prompt:', translatedPrompt)
+      } catch (geminiError) {
+        console.error('Gemini translation failed, using fallback:', geminiError)
+        // Gemini 실패시 기존 단순 번역 사용
+        translatedPrompt = translateKoreanPrompt(prompt)
+      }
+    }
+    
+    console.log('Original prompt:', prompt)
+    console.log('Final prompt:', translatedPrompt)
 
     if (model === 'nano-banana' || model === 'fal') {
       // Fal.ai FLUX Pro 1.1 Ultra API 호출 (고품질 한국인/인물 이미지)
