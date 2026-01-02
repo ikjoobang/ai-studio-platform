@@ -1218,6 +1218,59 @@ AI Studio | https://ai-studio-platform.pages.dev
   })
 })
 
+// 한글 키워드를 영어로 변환하는 함수
+function translateKoreanPrompt(koreanPrompt: string): string {
+  const translations: Record<string, string> = {
+    // 스킨케어/뷰티 관련
+    '미라클 필링': 'miracle peeling skincare treatment',
+    '필링': 'peeling exfoliation skincare',
+    '필링제': 'peeling gel cream',
+    '제형': 'cosmetic formulation texture',
+    '도포': 'applying gently',
+    '정교한 손길': 'delicate elegant hands applying',
+    '손길': 'gentle touch hands',
+    '피부': 'skin face',
+    '피부 관리': 'skincare treatment',
+    '스킨케어': 'skincare beauty treatment',
+    '화장품': 'cosmetics beauty products',
+    '뷰티': 'beauty',
+    '에센스': 'serum essence',
+    '크림': 'cream lotion',
+    '마사지': 'facial massage',
+    '스파': 'spa treatment',
+    // 인물 관련
+    '한국인': 'Korean person',
+    '한국 여성': 'beautiful Korean woman',
+    '여성': 'woman',
+    '남성': 'man',
+    '얼굴': 'face portrait',
+    '클로즈업': 'close-up shot',
+    // 일반
+    '고품질': 'high quality 8K',
+    '사실적': 'photorealistic ultra realistic',
+    '전문': 'professional',
+    '광고': 'commercial advertisement',
+    '촬영': 'photography shot'
+  }
+  
+  let englishPrompt = koreanPrompt
+  
+  // 한글 키워드를 영어로 치환
+  for (const [korean, english] of Object.entries(translations)) {
+    englishPrompt = englishPrompt.replace(new RegExp(korean, 'g'), english)
+  }
+  
+  // 한글이 포함되어 있으면 기본 컨텍스트 추가
+  const hasKorean = /[가-힣]/.test(englishPrompt)
+  if (hasKorean) {
+    // 남은 한글을 제거하고 영어 키워드만 유지
+    englishPrompt = englishPrompt.replace(/[가-힣]+/g, '').trim()
+    englishPrompt = `${englishPrompt}, Korean beauty skincare, professional photography, studio lighting`
+  }
+  
+  return englishPrompt.replace(/\s+/g, ' ').trim()
+}
+
 // ==================== 이미지 생성 API ====================
 app.post('/api/generate-image', async (c) => {
   try {
@@ -1227,6 +1280,11 @@ app.post('/api/generate-image', async (c) => {
     if (!prompt) {
       return c.json({ success: false, error: '프롬프트를 입력해주세요' }, 400)
     }
+
+    // 한글 프롬프트를 영어로 변환
+    const translatedPrompt = translateKoreanPrompt(prompt)
+    console.log('Original prompt:', prompt)
+    console.log('Translated prompt:', translatedPrompt)
 
     const falApiKey = c.env?.FAL_API_KEY || API_KEYS.FAL_API_KEY
     const ideogramApiKey = c.env?.IDEOGRAM_API_KEY || API_KEYS.IDEOGRAM_API_KEY
@@ -1240,7 +1298,7 @@ app.post('/api/generate-image', async (c) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          prompt: prompt,
+          prompt: translatedPrompt,
           aspect_ratio: aspectRatio === '16:9' ? '16:9' : aspectRatio === '9:16' ? '9:16' : '1:1',
           output_format: 'jpeg',
           safety_tolerance: '6'
