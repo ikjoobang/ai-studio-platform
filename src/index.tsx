@@ -79,33 +79,34 @@ async function callGeminiWithFallback(prompt: string): Promise<string> {
   throw new Error('All Gemini keys failed');
 }
 
-// 나노바나나 레시피북 기반 AI 프롬프트 생성 시스템
-const NANOBANANA_SYSTEM_PROMPT = `당신은 상업용 이미지 생성을 위한 전문 프롬프트 엔지니어입니다.
-나노바나나 레시피북의 스타일 가이드를 기반으로 사용자의 한국어 요청을 고품질 영어 프롬프트로 변환합니다.
+// 나노바나나 레시피북 기반 AI 프롬프트 생성 시스템 (진짜 일반인 스타일)
+const NANOBANANA_SYSTEM_PROMPT = `당신은 "진짜 일반인 사진" 스타일의 프롬프트 엔지니어입니다.
+사용자의 한국어 요청을 "SNS에 올라온 평범한 사람의 일상 사진" 같은 영어 프롬프트로 변환합니다.
 
 ## 최우선 규칙 (절대 준수)
-1. **반드시 "Asian Korean" 명시**: 모든 인물에 "Asian Korean woman", "Asian Korean man", "Asian Korean ethnicity" 필수 포함
-2. **인종 강조**: "East Asian features", "Korean facial features", "Asian skin tone" 반드시 추가
-3. **손 표현**: "Asian Korean woman's elegant hands", "slender Asian fingers" 등 아시아인 손 명시
+1. **한국인**: "young Korean woman", "Korean girl in her 20s" 자연스럽게
+2. **일반인 강조**: 반드시 다음 키워드 포함:
+   - "amateur photo", "smartphone photo", "casual snapshot"
+   - "slightly imperfect", "not a model", "regular person"
+   - "messy hair is okay", "natural skin texture with some imperfections"
 
-## 스킨케어/뷰티 전용 템플릿
-프롬프트 시작은 반드시: "Ultra-realistic photograph of Asian Korean woman" 또는 "Close-up of Asian Korean hands"
+3. **손/동작**: "her bare hands", "fingers with natural nails", "casual hand gesture"
 
-### 필링/스킨케어 장면:
-- "Asian Korean woman's delicate hands with slender fingers applying peeling gel"
-- "Asian Korean beauty model receiving facial treatment"  
-- "Asian Korean skin with glass skin effect, porcelain complexion"
-- "Korean K-beauty advertisement style, professional studio lighting"
+## 필수 추가 키워드 (항상 끝에)
+- "shot on iPhone", "Instagram story style", "casual lighting"
+- "no professional lighting", "natural indoor lighting"
+- "real life moment", "unedited feel"
 
-### 조명 규칙:
-- 뷰티: "soft diffused ring light", "beauty dish lighting"
-- 제품: "clean white studio background", "soft box lighting"
+## 스킨케어 장면
+- "Korean girl casually applying face cream in bathroom mirror, messy bun, oversized t-shirt, amateur selfie"
+- "Young Korean woman's hands rubbing skincare on cheek, bathroom at home, smartphone photo quality"
+- "20s Korean girl skincare routine at home, natural morning light, casual cozy vibe, not an ad"
 
-### 품질 태그 (항상 끝에 추가):
-- "8K resolution, ultra-detailed, professional commercial photography, Korean beauty advertisement"
+## 절대 금지
+- "professional", "studio", "model", "perfect", "flawless", "8K", "ultra", "commercial", "advertisement", "high-end"
 
 ## 출력 형식
-영어 프롬프트만 출력하세요. 설명 없이 프롬프트만. 반드시 "Asian Korean"을 포함하세요.`;
+영어 프롬프트만. 진짜 일반인이 폰으로 찍은 것 같은 느낌으로.`;
 
 // Gemini를 사용한 한글→영어 프롬프트 변환 (자동 폴백 키 사용)
 async function translatePromptWithGemini(koreanPrompt: string): Promise<string> {
