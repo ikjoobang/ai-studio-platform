@@ -483,7 +483,7 @@ app.get('/generate', (c) => {
             const prompt = document.getElementById('prompt-input').value;
             
             if (!prompt.trim()) {
-              alert('프롬프트를 입력해주세요 in English');
+              alert('영상을 설명해주세요');
               return;
             }
             
@@ -770,12 +770,12 @@ app.get('/generate-video', (c) => {
             const prompt = document.getElementById('video-prompt').value;
             
             if (!prompt.trim()) {
-              alert('프롬프트를 입력해주세요 in English');
+              alert('영상을 설명해주세요');
               return;
             }
             
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>생성 요청 중...';
             btn.disabled = true;
             
             try {
@@ -793,10 +793,10 @@ app.get('/generate-video', (c) => {
               const data = await response.json();
               
               if (data.success) {
-                btn.innerHTML = '<i class="fas fa-check mr-2"></i>Submitted!';
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i>요청 완료!';
                 
                 const previewArea = document.getElementById('video-preview-area');
-                previewArea.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i><p class="text-gray-400">생성 중...deo...</p><p class="text-xs text-gray-500 mt-2">Task ID: ' + data.taskId + '</p><p class="text-xs text-gray-500">This may take 1-3 minutes</p></div>';
+                previewArea.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i><p class="text-gray-400">영상 생성 중...</p><p class="text-xs text-gray-500 mt-2">Task ID: ' + data.taskId + '</p><p class="text-xs text-gray-500">약 1-3분 소요됩니다</p></div>';
                 
                 // Start polling for status
                 pollVideoStatus(data.taskId);
@@ -828,7 +828,7 @@ app.get('/generate-video', (c) => {
                 } else if (data.status === '실패') {
                   previewArea.innerHTML = '<div class="text-center text-red-400"><i class="fas fa-exclamation-circle text-4xl mb-4"></i><p>생성 실패</p><p class="text-xs mt-2">' + (data.error || 'Unknown error') + '</p></div>';
                 } else {
-                  previewArea.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i><p class="text-gray-400">생성 중...deo...</p><p class="text-xs text-gray-500 mt-2">Status: ' + data.rawStatus + '</p></div>';
+                  previewArea.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i><p class="text-gray-400">영상 생성 중...</p><p class="text-xs text-gray-500 mt-2">Status: ' + data.rawStatus + '</p></div>';
                   setTimeout(checkStatus, 5000);
                 }
               } catch (error) {
