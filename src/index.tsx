@@ -1263,18 +1263,28 @@ app.post('/api/generate-image', async (c) => {
         while (attempts < maxAttempts) {
           await new Promise(resolve => setTimeout(resolve, 2000))
           
-          const statusResponse = await fetch(`https://queue.fal.run/fal-ai/flux/dev/requests/${data.request_id}/status`, {
+          // 상태 확인
+          const statusResponse = await fetch(`https://queue.fal.run/fal-ai/flux/requests/${data.request_id}/status`, {
             headers: { 'Authorization': `Key ${falApiKey}` }
           })
           
-          const statusData = await statusResponse.json() as { status: string, response?: { images?: Array<{ url: string }> } }
+          const statusData = await statusResponse.json() as { status: string }
           
-          if (statusData.status === 'COMPLETED' && statusData.response?.images?.[0]) {
-            return c.json({
-              success: true,
-              imageUrl: statusData.response.images[0].url,
-              model: 'nano-banana'
+          if (statusData.status === 'COMPLETED') {
+            // 결과 가져오기
+            const resultResponse = await fetch(`https://queue.fal.run/fal-ai/flux/requests/${data.request_id}`, {
+              headers: { 'Authorization': `Key ${falApiKey}` }
             })
+            
+            const resultData = await resultResponse.json() as { images?: Array<{ url: string }> }
+            
+            if (resultData.images?.[0]) {
+              return c.json({
+                success: true,
+                imageUrl: resultData.images[0].url,
+                model: 'nano-banana'
+              })
+            }
           }
           
           attempts++
