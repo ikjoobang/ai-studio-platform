@@ -1232,8 +1232,8 @@ app.post('/api/generate-image', async (c) => {
     const ideogramApiKey = c.env?.IDEOGRAM_API_KEY || API_KEYS.IDEOGRAM_API_KEY
 
     if (model === 'nano-banana' || model === 'fal') {
-      // Fal.ai API 호출
-      const response = await fetch('https://queue.fal.run/fal-ai/flux/dev', {
+      // Fal.ai FLUX Pro 1.1 Ultra API 호출 (고품질 한국인/인물 이미지)
+      const response = await fetch('https://queue.fal.run/fal-ai/flux-pro/v1.1-ultra', {
         method: 'POST',
         headers: {
           'Authorization': `Key ${falApiKey}`,
@@ -1241,9 +1241,9 @@ app.post('/api/generate-image', async (c) => {
         },
         body: JSON.stringify({
           prompt: prompt,
-          image_size: aspectRatio === '16:9' ? 'landscape_16_9' : aspectRatio === '9:16' ? 'portrait_16_9' : 'square',
-          num_images: 1,
-          enable_safety_checker: false
+          aspect_ratio: aspectRatio === '16:9' ? '16:9' : aspectRatio === '9:16' ? '9:16' : '1:1',
+          output_format: 'jpeg',
+          safety_tolerance: '6'
         })
       })
 
