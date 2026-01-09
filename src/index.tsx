@@ -184,7 +184,6 @@ app.get('/', (c) => {
               <a href="#features" class="text-gray-300 hover:text-white transition-colors">기능</a>
               <a href="#tools" class="text-gray-300 hover:text-white transition-colors">AI 도구</a>
               <a href="/generate-video" class="text-gray-300 hover:text-white transition-colors">영상</a>
-              <a href="#pricing" class="text-gray-300 hover:text-white transition-colors">요금제</a>
               <a href="/dashboard" class="text-gray-300 hover:text-white transition-colors">대시보드</a>
             </div>
             
@@ -318,60 +317,6 @@ app.get('/', (c) => {
                 </p>
               </div>
             </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="pricing" class="py-20 sm:py-32 px-4">
-        <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              간단한 <span class="gradient-text">요금제</span>
-            </h2>
-          </div>
-          
-          <div class="grid sm:grid-cols-3 gap-6 lg:gap-8">
-            <div class="glass rounded-2xl p-6 sm:p-8 card-hover">
-              <div class="text-center mb-6">
-                <h3 class="text-xl font-semibold mb-2">스타터</h3>
-                <div class="text-4xl font-bold mb-1">₩29,000</div>
-                <p class="text-gray-400 text-sm">630 크레딧</p>
-              </div>
-              <ul class="space-y-3 mb-8 text-sm">
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>약 63장 이미지</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>모든 AI 도구</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>1년간 유효</li>
-              </ul>
-            </div>
-            
-            <div class="gradient-border card-hover">
-              <div class="gradient-border-inner p-6 sm:p-8 relative">
-                <div class="absolute top-0 right-0 bg-gradient-to-r from-brand-500 to-purple-600 text-xs px-4 py-1 rounded-bl-xl">인기</div>
-                <div class="text-center mb-6">
-                  <h3 class="text-xl font-semibold mb-2">Pro</h3>
-                  <div class="text-4xl font-bold gradient-text mb-1">₩59,000</div>
-                  <p class="text-gray-400 text-sm">1,500 크레딧</p>
-                </div>
-                <ul class="space-y-3 mb-8 text-sm">
-                  <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>약 150장 이미지</li>
-                  <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>우선 대기열</li>
-                  <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>1년간 유효</li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="glass rounded-2xl p-6 sm:p-8 card-hover">
-              <div class="text-center mb-6">
-                <h3 class="text-xl font-semibold mb-2">비즈니스</h3>
-                <div class="text-4xl font-bold mb-1">₩119,000</div>
-                <p class="text-gray-400 text-sm">3,500 크레딧</p>
-              </div>
-              <ul class="space-y-3 mb-8 text-sm">
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>약 350장 이미지</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>팀 공유</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>1년간 유효</li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
